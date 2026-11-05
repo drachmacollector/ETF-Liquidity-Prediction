@@ -7,7 +7,111 @@ Two diagrams, two audiences:
 
 Both diagrams use [Mermaid](https://mermaid.js.org/) syntax — they'll render automatically in GitHub, Claude, Obsidian, most modern Markdown viewers, or at [mermaid.live](https://mermaid.live) if you want to paste one in and inspect/export it as an image for a slide.
 
+
 ---
+
+## 2. Financial flowchart
+
+
+```mermaid
+%%{init: {'flowchart': {'curve': 'basis'}}}%%
+flowchart TD
+
+subgraph DATA["Daily Public Data We Use"]
+    direction LR
+    D_PRICE["Exchange Closing Price<br/>(NSE/BSE, every trading day) Bhavcopy"]
+    D_NAV["Official AMFI NAV published once/day"]
+    D_METAL["Global Gold/Silver Price<br/>+ USD/INR Rate"]
+    D_ID["ETF Identity & Calendar<br/>(ISIN, symbol history, trading days)"]
+end
+
+subgraph CLOCK["The NAV vs iNAV Distinction"]
+    direction LR
+    NAV_OFF["Official NAV<br/>once a day,<br/>full historical archive"]
+    INAV_LIVE["iNAV (intraday estimate)<br/>live only, NO public<br/>historical archive"]
+    TARGET["Model is trained & tested against<br/>Close-vs-OFFICIAL-NAV deviation<br/>(iNAV used only as context)"]
+end
+
+subgraph FORMULAS["The Core Math — How Every Number Is Actually Calculated"]
+    direction TB
+    FORM1["Premium / Discount (bps)<br/>prem(i,t) = 10,000 × (Price(i,t) − NAV(i,t)) / NAV(i,t)<br/>positive = premium, negative = discount"]
+    FORM2["Own-Normal Baseline<br/>m60(i,t) = 60-day trailing MEDIAN of prem(i,t)<br/>MAD60(i,t) = 60-day trailing median absolute deviation"]
+    FORM3["Tail-Event Label (what Output B learns from)<br/>E(i,t+1) = 1 if │prem(i,t+1) − m60(i,t)│ ≥ max(τ, 3×MAD60(i,t))<br/>τ frozen pre-test: ≈200bps gold/silver, ≈50bps controls"]
+    FORM4["Output A — Quantile Forecast<br/>5 LightGBM models → Q5, Q25, Q50, Q75, Q95 of prem(i,t+1)<br/>90% interval = [Q5, Q95], median = Q50"]
+    FORM5["Output B — Calibrated Probability<br/>raw LightGBM score → Isotonic Regression → P(E=1)<br/>Risk level: Watch if P≥10%, High if P≥30%"]
+end
+
+subgraph SIGNALS["Financial Signals the Model Weighs"]
+    direction LR
+    S1["Premium/Discount vs. this<br/>ETF's own recent normal"]
+    S2["Trading volume & liquidity stress<br/>(is demand surging ?)"]
+    S3["Underlying metal volatility &<br/>global-vs-India timing gap"]
+    S4["Peer ETF behaviour<br/>(is it just this fund, or<br/>the whole gold/silver category?)"]
+    S5["Seasonal & regulatory context<br/>(festivals, FoF halts, SEBI regime)"]
+end
+
+subgraph AI["The AI Layer — LightGBM"]
+    direction TB
+    MODEL["Model used: LightGBM<br/>hundreds of small decision trees working<br/>together, built one after another"]
+    LEARN["Learns which COMBINATIONS of<br/>signals preceded past dislocations<br/>(Oct-2025 squeeze, Feb-2026 crash)"]
+    OUT_A["Output A — Premium Range<br/>5 quantile models (Q5/Q25/Q50/Q75/Q95)<br/>→ a calibrated range for tomorrow's premium"]
+    OUT_B["Output B — Tail-Risk Probability<br/>binary classifier + Isotonic calibration<br/>→ a trustworthy P% chance of an unusual jump"]
+end
+
+subgraph DESK["Example Output — Mirae Silver ETF"]
+    direction LR
+    CARDA["OUTPUT A · PREMIUM RANGE<br/><b>+1.2% to +4.8%</b><br/>90% prediction interval<br/>Median forecast: +2.7%"]
+    CARDB["OUTPUT B · TAIL-RISK PROBABILITY<br/><b>68%</b><br/>HIGH RISK<br/>Probability of an unusually large deviation<br/>from this ETF's own recent normal"]
+end
+
+D_PRICE --> S1
+D_NAV --> S1
+D_NAV --> NAV_OFF --> TARGET
+INAV_LIVE -.not the training target.-> TARGET
+D_METAL --> S3
+D_ID --> S1
+
+D_PRICE --> FORM1
+D_NAV --> FORM1
+FORM1 --> FORM2 --> FORM3
+FORM1 --> FORM4
+FORM3 --> FORM5
+
+S1 --> LEARN
+S2 --> LEARN
+S3 --> LEARN
+S4 --> LEARN
+S5 --> LEARN
+TARGET --> LEARN
+FORM3 --> LEARN
+FORM4 --> LEARN
+
+LEARN --> OUT_A
+LEARN --> OUT_B
+FORM4 --> OUT_A
+FORM5 --> OUT_B
+
+OUT_A --> CARDA
+OUT_B --> CARDB
+
+classDef data fill:#E8F1FA,color:#17365D,stroke:#5684B5,stroke-width:1px
+classDef clock fill:#F3E8FF,color:#432B68,stroke:#9333EA,stroke-width:1px
+classDef formula fill:#FFF7E0,color:#7A5B00,stroke:#D9A441,stroke-width:1.5px
+classDef signal fill:#EAF3EA,color:#234D30,stroke:#65966B,stroke-width:1px
+classDef ai fill:#E9EEFB,color:#1E3A8A,stroke:#4C6FDE,stroke-width:1.5px
+classDef desk fill:#EDE7F8,color:#432B68,stroke:#8A70B5,stroke-width:1px
+classDef cardA fill:#D1FAE5,color:#064E3B,stroke:#059669,stroke-width:2px
+classDef cardB fill:#FEE2E2,color:#7F1D1D,stroke:#DC2626,stroke-width:2px
+
+class D_PRICE,D_NAV,D_METAL,D_ID data
+class NAV_OFF,INAV_LIVE,TARGET clock
+class FORM1,FORM2,FORM3,FORM4,FORM5 formula
+class S1,S2,S3,S4,S5 signal
+class MODEL,ELI10,LEARN,OUT_A,OUT_B ai
+class CARDA cardA
+class CARDB cardB
+class NOTE desk
+```
 
 ## 1. Master Flowchart — Full System Detail
 
@@ -243,182 +347,6 @@ T5 -.validates.-> LAB
 T6 -.validates.-> MDL
 T7 -.validates.-> BT
 T8 -.validates.-> DASH
-```
-
----
-
-## 2. Financial flowchart
-
-```mermaid
-flowchart TD
-
-subgraph DATA["Daily Public Data We Use"]
-    direction LR
-    D_PRICE["Exchange Closing Price<br/>(NSE/BSE, every trading day) Bhavcopy"]
-    D_NAV["Official AMFI NAV published once/day"]
-    D_METAL["Global Gold/Silver Price<br/>+ USD/INR Rate"]
-    D_ID["ETF Identity & Calendar<br/>(ISIN, symbol history, trading days)"]
-end
-
-subgraph CLOCK["The NAV vs iNAV Distinction"]
-    direction LR
-    NAV_OFF["Official NAV<br/>once a day,<br/>full historical archive"]
-    INAV_LIVE["iNAV (intraday estimate)<br/>live only, NO public<br/>historical archive"]
-    TARGET["Model is trained & tested against<br/>Close-vs-OFFICIAL-NAV deviation<br/>(iNAV used only as context)"]
-end
-
-subgraph SIGNALS["Financial Signals the Model Weighs"]
-    S1["Premium/Discount vs. this<br/>ETF's own recent normal"]
-    S2["Trading volume & liquidity stress<br/>(is demand surging ?)"]
-    S3["Underlying metal volatility &<br/>global-vs-India timing gap"]
-    S4["Peer ETF behaviour<br/>(is it just this fund, or<br/>the whole gold/silver category?)"]
-    S5["Seasonal & regulatory context<br/>(festivals, FoF halts, SEBI regime)"]
-end
-
-subgraph AI["The AI Forecaster"]
-    LEARN["Learns which COMBINATIONS of<br/>signals preceded past dislocations<br/>(Oct-2025 squeeze, Feb-2026 crash)"]
-    OUT_A["Output A — Premium Range<br/>'tomorrow's premium likely lands<br/>between X% and Y%'"]
-    OUT_B["Output B — Tail-Risk Probability<br/>'P% chance of an unusual jump away<br/>from this ETF's own normal'"]
-end
-
-subgraph DESK["What the Sales Desk Sees"]
-    RISK["Daily Risk List<br/>Normal / Watch / High<br/>— per ETF, Mirae products highlighted"]
-    WHY["Plain-Language Reasons<br/>e.g. 'volume 3x normal,<br/>peer silver ETFs also elevated'"]
-    PROOF["Event Replay<br/>'what would this have said<br/>on 9-Oct-2025 and in Feb-2026?'"]
-end
-
-D_PRICE --> S1
-D_NAV --> S1
-D_NAV --> NAV_OFF --> TARGET
-INAV_LIVE -.not the training target.-> TARGET
-D_METAL --> S3
-D_ID --> S1
-
-S1 --> LEARN
-S2 --> LEARN
-S3 --> LEARN
-S4 --> LEARN
-S5 --> LEARN
-TARGET --> LEARN
-
-LEARN --> OUT_A
-LEARN --> OUT_B
-
-OUT_A --> RISK
-OUT_B --> RISK
-LEARN --> WHY
-OUT_A --> PROOF
-OUT_B --> PROOF
-```
-
----
-
-
-## More simpler
-
-```mermaid
-%%{init: {'flowchart': {'curve': 'basis'}}}%%
-flowchart TD
-
-subgraph DATA["Daily Public Data We Use"]
-    direction LR
-    D_PRICE["Exchange Closing Price<br/>(NSE/BSE, every trading day) Bhavcopy"]
-    D_NAV["Official AMFI NAV published once/day"]
-    D_METAL["Global Gold/Silver Price<br/>+ USD/INR Rate"]
-    D_ID["ETF Identity & Calendar<br/>(ISIN, symbol history, trading days)"]
-end
-
-subgraph CLOCK["The NAV vs iNAV Distinction"]
-    direction LR
-    NAV_OFF["Official NAV<br/>once a day,<br/>full historical archive"]
-    INAV_LIVE["iNAV (intraday estimate)<br/>live only, NO public<br/>historical archive"]
-    TARGET["Model is trained & tested against<br/>Close-vs-OFFICIAL-NAV deviation<br/>(iNAV used only as context)"]
-end
-
-subgraph FORMULAS["The Core Math — How Every Number Is Actually Calculated"]
-    direction TB
-    FORM1["Premium / Discount (bps)<br/>prem(i,t) = 10,000 × (Price(i,t) − NAV(i,t)) / NAV(i,t)<br/>positive = premium, negative = discount"]
-    FORM2["Own-Normal Baseline<br/>m60(i,t) = 60-day trailing MEDIAN of prem(i,t)<br/>MAD60(i,t) = 60-day trailing median absolute deviation"]
-    FORM3["Tail-Event Label (what Output B learns from)<br/>E(i,t+1) = 1 if │prem(i,t+1) − m60(i,t)│ ≥ max(τ, 3×MAD60(i,t))<br/>τ frozen pre-test: ≈200bps gold/silver, ≈50bps controls"]
-    FORM4["Output A — Quantile Forecast<br/>5 LightGBM models → Q5, Q25, Q50, Q75, Q95 of prem(i,t+1)<br/>90% interval = [Q5, Q95], median = Q50"]
-    FORM5["Output B — Calibrated Probability<br/>raw LightGBM score → Isotonic Regression → P(E=1)<br/>Risk level: Watch if P≥10%, High if P≥30%"]
-end
-
-subgraph SIGNALS["Financial Signals the Model Weighs"]
-    direction LR
-    S1["Premium/Discount vs. this<br/>ETF's own recent normal"]
-    S2["Trading volume & liquidity stress<br/>(is demand surging ?)"]
-    S3["Underlying metal volatility &<br/>global-vs-India timing gap"]
-    S4["Peer ETF behaviour<br/>(is it just this fund, or<br/>the whole gold/silver category?)"]
-    S5["Seasonal & regulatory context<br/>(festivals, FoF halts, SEBI regime)"]
-end
-
-subgraph AI["The AI Forecaster — LightGBM (Gradient-Boosted Decision Trees)"]
-    direction TB
-    MODEL["Model used: LightGBM<br/>hundreds of small decision trees working<br/>together, built one after another"]
-    ELI10["ELI10 — how it actually learns:<br/>Tree 1 makes a rough, crude guess.<br/>Tree 2 looks ONLY at what Tree 1 got wrong<br/>and nudges the answer to fix that mistake.<br/>Tree 3 fixes whatever is still wrong after 1+2.<br/>...repeat this correction loop hundreds of times.<br/>Final prediction = sum of all the small corrections,<br/>like sharpening a blurry photo one pass at a time."]
-    LEARN["Learns which COMBINATIONS of<br/>signals preceded past dislocations<br/>(Oct-2025 squeeze, Feb-2026 crash)"]
-    OUT_A["Output A — Premium Range<br/>5 quantile models (Q5/Q25/Q50/Q75/Q95)<br/>→ a calibrated range for tomorrow's premium"]
-    OUT_B["Output B — Tail-Risk Probability<br/>binary classifier + Isotonic calibration<br/>→ a trustworthy P% chance of an unusual jump"]
-end
-
-subgraph DESK["Illustrative Forecast Output — Mirae Silver ETF"]
-    direction LR
-    CARDA["OUTPUT A · PREMIUM RANGE<br/><b>+1.2% to +4.8%</b><br/>90% prediction interval<br/>Median forecast: +2.7%"]
-    CARDB["OUTPUT B · TAIL-RISK PROBABILITY<br/><b>68%</b><br/>HIGH RISK<br/>Probability of an unusually large deviation<br/>from this ETF's own recent normal"]
-    NOTE["Illustrative values only —<br/>not real market data or live predictions"]
-end
-
-D_PRICE --> S1
-D_NAV --> S1
-D_NAV --> NAV_OFF --> TARGET
-INAV_LIVE -.not the training target.-> TARGET
-D_METAL --> S3
-D_ID --> S1
-
-D_PRICE --> FORM1
-D_NAV --> FORM1
-FORM1 --> FORM2 --> FORM3
-FORM1 --> FORM4
-FORM3 --> FORM5
-
-S1 --> LEARN
-S2 --> LEARN
-S3 --> LEARN
-S4 --> LEARN
-S5 --> LEARN
-TARGET --> LEARN
-FORM3 --> LEARN
-FORM4 --> LEARN
-
-MODEL --> ELI10 --> LEARN
-LEARN --> OUT_A
-LEARN --> OUT_B
-FORM4 --> OUT_A
-FORM5 --> OUT_B
-
-OUT_A --> CARDA
-OUT_B --> CARDB
-CARDA --> NOTE
-CARDB --> NOTE
-
-classDef data fill:#E8F1FA,color:#17365D,stroke:#5684B5,stroke-width:1px
-classDef clock fill:#F3E8FF,color:#432B68,stroke:#9333EA,stroke-width:1px
-classDef formula fill:#FFF7E0,color:#7A5B00,stroke:#D9A441,stroke-width:1.5px
-classDef signal fill:#EAF3EA,color:#234D30,stroke:#65966B,stroke-width:1px
-classDef ai fill:#E9EEFB,color:#1E3A8A,stroke:#4C6FDE,stroke-width:1.5px
-classDef desk fill:#EDE7F8,color:#432B68,stroke:#8A70B5,stroke-width:1px
-classDef cardA fill:#D1FAE5,color:#064E3B,stroke:#059669,stroke-width:2px
-classDef cardB fill:#FEE2E2,color:#7F1D1D,stroke:#DC2626,stroke-width:2px
-
-class D_PRICE,D_NAV,D_METAL,D_ID data
-class NAV_OFF,INAV_LIVE,TARGET clock
-class FORM1,FORM2,FORM3,FORM4,FORM5 formula
-class S1,S2,S3,S4,S5 signal
-class MODEL,ELI10,LEARN,OUT_A,OUT_B ai
-class CARDA cardA
-class CARDB cardB
-class NOTE desk
 ```
 
 
