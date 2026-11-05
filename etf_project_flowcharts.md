@@ -316,6 +316,7 @@ OUT_B --> PROOF
 
 ## More simpler
 
+```mermaid
 flowchart TD
     A(["ETF Liquidity Early-Warning System"])
 
@@ -351,10 +352,13 @@ flowchart TD
     class B1,B2,B3,B4 source
     class C,D,I process
     class E,F,G,H model
+```
+
 
 
 ### another one
 
+```mermaid
 flowchart TB
 
     %% =====================================================
@@ -538,3 +542,4 @@ flowchart TB
     style BUSINESS fill:#F5F3FF,stroke:#A78BFA,stroke-width:2px
 
     linkStyle default stroke:#64748B,stroke-width:1.5px
+```
