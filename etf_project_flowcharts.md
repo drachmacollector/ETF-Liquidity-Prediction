@@ -247,9 +247,7 @@ T8 -.validates.-> DASH
 
 ---
 
-## 2. Simplified Pitch Flowchart — For Umesh
-
-*Financial mechanics first, engineering kept to the minimum needed to show the pipeline is real. Designed to be read top-to-bottom in under a minute.*
+## 2. Financial flowchart
 
 ```mermaid
 flowchart TD
@@ -315,8 +313,228 @@ OUT_B --> PROOF
 
 ---
 
-### Notes for using these
 
-- **Mermaid rendering tip:** if you want a clean PNG/SVG for a slide, paste either block into [mermaid.live](https://mermaid.live) and export. GitHub and Claude's own chat/artifact view also render these natively.
-- **The two flowcharts deliberately disagree on vocabulary** — the master one uses engineering terms (pandera, DuckDB, CQR, isotonic regression) on purpose, since it's your own reference. The Umesh-facing one avoids all of that; everything in it is a financial or data-availability concept he already understands, framed around the project.
-- **The NAV-vs-iNAV box in the second diagram is there deliberately** — it's the one subtle point worth being precise about even in a simplified pitch, per the open correction flagged earlier: the project's evidence (Oct 2025) was originally reported against iNAV, but the model itself is built and tested against the official NAV. Keeping this box small but present means you won't accidentally misstate it live.
+## More simpler
+
+flowchart TD
+    A(["ETF Liquidity Early-Warning System"])
+
+    A --> B["DATA SOURCES"]
+
+    B --> B1["NSE / BSE<br/>Price, volume, turnover"]
+    B --> B2["AMFI<br/>Official daily NAV"]
+    B --> B3["Global Markets<br/>Gold, silver, USD/INR"]
+    B --> B4["ETF & Market Context<br/>Peer ETFs, scheme data, events"]
+
+    B1 & B2 & B3 & B4 --> C["DATA PROCESSING<br/>Cleaning · Alignment · Feature Engineering"]
+
+    C --> D["~30–45 PREDICTIVE FEATURES<br/><br/>Premium history<br/>Trading volume & turnover<br/>Price volatility and range<br/>Gold / silver returns<br/>Peer ETF premiums<br/>NAV–market price divergence"]
+
+    D --> E["MACHINE LEARNING MODELS"]
+
+    E --> F["TASK A: PREMIUM FORECAST<br/>Tomorrow's premium / discount<br/>Predicted range in basis points"]
+    E --> G["TASK B: TAIL-RISK DETECTION<br/>Probability of unusual premium<br/>Normal · Watch · High"]
+
+    F & G --> H["EXPLAINABILITY<br/>Key contributing factors<br/>SHAP-based reason codes"]
+
+    H --> I["VALIDATION & BACKTESTING<br/>Walk-forward testing<br/>October 2025 premium event<br/>Jan–Feb 2026 market stress"]
+
+    I --> J(["BUSINESS OUTPUT<br/>Daily ETF risk monitor<br/>Early identification of potential<br/>premium / discount dislocations"])
+
+    classDef main fill:#17365D,color:#fff,stroke:#17365D,stroke-width:2px
+    classDef source fill:#E8F1FA,color:#17365D,stroke:#5684B5
+    classDef process fill:#EAF3EA,color:#234D30,stroke:#65966B
+    classDef model fill:#FFF0D9,color:#704B13,stroke:#C89B4B
+    classDef output fill:#E9E1F5,color:#432B68,stroke:#8A70B5
+
+    class A,J main
+    class B1,B2,B3,B4 source
+    class C,D,I process
+    class E,F,G,H model
+
+
+### another one
+
+flowchart TB
+
+    %% =====================================================
+    %% ETF PREMIUM EARLY-WARNING SYSTEM
+    %% FINANCIAL-FIRST ARCHITECTURE
+    %% =====================================================
+
+    TITLE(["ETF PREMIUM EARLY-WARNING SYSTEM<br/>Gold & Silver ETFs · India"])
+
+    %% ---------------- DATA SOURCES ----------------
+
+    subgraph DATA["01 · MARKET DATA — WHAT HAPPENS TODAY?"]
+        direction LR
+
+        MARKET(["Exchange Data<br/><b>NSE / BSE</b><br/>Closing price · Volume<br/>Turnover · Trades"])
+
+        NAV(["Official NAV<br/><b>AMFI</b><br/>Daily published valuation<br/>Historical data available"])
+
+        METAL(["Underlying Markets<br/><b>Gold / Silver + USD/INR</b><br/>Global price movements<br/>Volatility · Overnight gaps"])
+
+        CONTEXT(["ETF & Market Context<br/>Scheme identity · Peers<br/>Trading calendar · Events<br/>Regulatory regime"])
+
+        INAV(["Live iNAV<br/><b>Mirae Asset Website</b><br/>Intraday indicative valuation<br/>No usable historical archive"])
+    end
+
+    %% ---------------- VALUATION DISTINCTION ----------------
+
+    subgraph VALUATION["02 · UNDERSTANDING THE ETF'S VALUE"]
+        direction LR
+
+        PRICE(["Exchange Market Price<br/>What buyers and sellers<br/>actually pay"])
+
+        OFFICIAL(["Official NAV<br/>Authoritative daily<br/>scheme valuation"])
+
+        INDICATIVE(["iNAV<br/>Live estimate of<br/>intraday value"])
+
+        PREMIUM(["DAILY PREMIUM / DISCOUNT<br/><b>(Market Close − Official NAV) ÷ NAV</b><br/>Measured in basis points"])
+
+        CLOCK(["Valuation Timing Check<br/>Global metal markets and<br/>Indian ETF markets run on<br/>different trading clocks"])
+    end
+
+    %% ---------------- FEATURE ENGINEERING ----------------
+
+    subgraph SIGNALS["03 · FINANCIAL SIGNALS — WHAT MAY INDICATE STRESS?"]
+        direction LR
+
+        S1(["Premium Behaviour<br/>Recent trend · Volatility<br/>Deviation from own normal"])
+
+        S2(["Trading & Liquidity<br/>Turnover · Trade count<br/>Price range · Stale prices"])
+
+        S3(["Underlying Metal<br/>Gold / silver volatility<br/>Overnight gaps · Price shocks"])
+
+        S4(["Peer ETF Behaviour<br/>Are other gold / silver ETFs<br/>showing similar deviations?"])
+
+        S5(["Market Context<br/>Festivals · FoF restrictions<br/>Regulatory regime · Holidays"])
+    end
+
+    %% ---------------- AI ENGINE ----------------
+
+    subgraph AI["04 · MACHINE-LEARNING FORECASTER"]
+        direction TB
+
+        LEARN{{"Learn patterns from historical ETF behaviour<br/>and today's financial conditions"}}
+
+        subgraph PREDICTIONS["TWO COMPLEMENTARY FORECASTS"]
+            direction LR
+
+            TASK_A(["<b>OUTPUT A · PREMIUM RANGE</b><br/>Forecast tomorrow's closing<br/>premium / discount to NAV<br/><br/>Example: −1% to +3%"])
+
+            TASK_B(["<b>OUTPUT B · TAIL-RISK PROBABILITY</b><br/>Chance of an unusually large<br/>deviation from the ETF's<br/>own recent normal<br/><br/>Example: 65%"])
+        end
+
+        EXPLAIN(["Explainable Predictions<br/>Identify the strongest contributing<br/>signals and generate plain-language<br/>reason codes"])
+    end
+
+    %% ---------------- VALIDATION ----------------
+
+    subgraph VALIDATION["05 · HISTORICAL TESTING — DOES IT ACTUALLY WORK?"]
+        direction LR
+
+        OCT(["<b>OCTOBER 2025</b><br/>Silver Premium Squeeze<br/><br/>Test for unusual<br/>official-NAV deviations<br/>iNAV reports = context only"])
+
+        FEB(["<b>JAN–FEBRUARY 2026</b><br/>Precious-Metal Crash<br/><br/>Extreme-market stress test<br/>Identify price-band constraints<br/>No claim of predicting circuits"])
+
+        BASELINE(["Benchmark Comparison<br/>Simple historical methods<br/>vs. machine learning<br/><br/>Walk-forward backtesting"])
+    end
+
+    %% ---------------- BUSINESS OUTPUT ----------------
+
+    subgraph BUSINESS["06 · WHAT THE ETF SALES TEAM RECEIVES"]
+        direction LR
+
+        DASH(["<b>DAILY ETF RISK MONITOR</b><br/>Gold & Silver ETF risk table<br/>Normal · Watch · High"])
+
+        DETAIL(["ETF-Level Analysis<br/>Forecast range · Tail probability<br/>Historical premium chart<br/>Peer comparison"])
+
+        REASONS(["Evidence-Based Reasons<br/>Why the model raised a warning<br/>What signals are deteriorating"])
+
+        REPLAY(["Historical Event Replay<br/>What would the system<br/>have said at the time?"])
+    end
+
+    END(["<b>BUSINESS PURPOSE</b><br/>Earlier visibility into unusual ETF pricing conditions<br/>to support better-informed distributor and advisor conversations"])
+
+    %% ---------------- CONNECTIONS ----------------
+
+    MARKET --> PRICE
+    NAV --> OFFICIAL
+    INAV -. "Live contextual reference" .-> INDICATIVE
+    METAL --> CLOCK
+
+    PRICE --> PREMIUM
+    OFFICIAL --> PREMIUM
+    INDICATIVE -. "Not the historical model target" .-> CLOCK
+    CLOCK --> PREMIUM
+
+    PREMIUM --> S1
+    MARKET --> S2
+    METAL --> S3
+    CONTEXT --> S5
+    CONTEXT --> S4
+    PREMIUM --> S4
+
+    S1 --> LEARN
+    S2 --> LEARN
+    S3 --> LEARN
+    S4 --> LEARN
+    S5 --> LEARN
+
+    LEARN --> TASK_A
+    LEARN --> TASK_B
+    LEARN --> EXPLAIN
+
+    TASK_A --> DASH
+    TASK_B --> DASH
+    TASK_A --> DETAIL
+    TASK_B --> DETAIL
+    EXPLAIN --> REASONS
+
+    PREMIUM --> OCT
+    PREMIUM --> FEB
+    TASK_A --> BASELINE
+    TASK_B --> BASELINE
+
+    OCT --> REPLAY
+    FEB --> REPLAY
+    BASELINE -. "Evidence of model performance" .-> DETAIL
+
+    DASH --> END
+    DETAIL --> END
+    REASONS --> END
+    REPLAY --> END
+
+    %% ---------------- STYLING ----------------
+
+    classDef title fill:#172554,stroke:#60A5FA,color:#FFFFFF,stroke-width:2px,font-size:19px,font-weight:bold;
+    classDef data fill:#E0F2FE,stroke:#0284C7,color:#0C4A6E,stroke-width:1.5px;
+    classDef valuation fill:#F3E8FF,stroke:#9333EA,color:#581C87,stroke-width:1.5px;
+    classDef signal fill:#FEF3C7,stroke:#D97706,color:#78350F,stroke-width:1.5px;
+    classDef ai fill:#DBEAFE,stroke:#2563EB,color:#1E3A8A,stroke-width:2px;
+    classDef prediction fill:#D1FAE5,stroke:#059669,color:#064E3B,stroke-width:2px;
+    classDef validation fill:#FCE7F3,stroke:#DB2777,color:#831843,stroke-width:1.5px;
+    classDef business fill:#EDE9FE,stroke:#7C3AED,color:#4C1D95,stroke-width:1.5px;
+    classDef outcome fill:#172554,stroke:#60A5FA,color:#FFFFFF,stroke-width:2px,font-weight:bold;
+
+    class TITLE title;
+    class MARKET,NAV,METAL,CONTEXT,INAV data;
+    class PRICE,OFFICIAL,INDICATIVE,PREMIUM,CLOCK valuation;
+    class S1,S2,S3,S4,S5 signal;
+    class LEARN,EXPLAIN ai;
+    class TASK_A,TASK_B prediction;
+    class OCT,FEB,BASELINE validation;
+    class DASH,DETAIL,REASONS,REPLAY business;
+    class END outcome;
+
+    style DATA fill:#F0F9FF,stroke:#7DD3FC,stroke-width:2px
+    style VALUATION fill:#FAF5FF,stroke:#C084FC,stroke-width:2px
+    style SIGNALS fill:#FFFBEB,stroke:#FBBF24,stroke-width:2px
+    style AI fill:#EFF6FF,stroke:#60A5FA,stroke-width:2px
+    style PREDICTIONS fill:#ECFDF5,stroke:#34D399,stroke-width:1.5px
+    style VALIDATION fill:#FDF2F8,stroke:#F9A8D4,stroke-width:2px
+    style BUSINESS fill:#F5F3FF,stroke:#A78BFA,stroke-width:2px
+
+    linkStyle default stroke:#64748B,stroke-width:1.5px
