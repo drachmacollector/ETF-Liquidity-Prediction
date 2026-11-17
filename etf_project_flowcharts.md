@@ -3,15 +3,13 @@
 Two diagrams, two audiences:
 
 1. **Master Flowchart (Full Technical Detail)** — every component, every data check, every modelling and validation step. Use this as your own personal reference map of the entire system — if you ever forget how a piece fits, find it here.
-2. **Simplified Pitch Flowchart (Financial-First)** — built for Umesh. Light on engineering jargon, explicit about the financial mechanics (NAV vs iNAV, the signals considered, the two prediction outputs). Meant to be understood at a glance.
+2. **Simplified Pitch Flowchart (Financial-First)** — built for nakul. Light on engineering jargon, explicit about the financial mechanics (NAV vs iNAV, the signals considered, the two prediction outputs). Meant to be understood at a glance.
 
 Both diagrams use [Mermaid](https://mermaid.js.org/) syntax — they'll render automatically in GitHub, Claude, Obsidian, most modern Markdown viewers, or at [mermaid.live](https://mermaid.live) if you want to paste one in and inspect/export it as an image for a slide.
-
 
 ---
 
 ## 2. Financial flowchart
-
 
 ```mermaid
 %%{init: {'flowchart': {'curve': 'basis'}}}%%
@@ -115,7 +113,7 @@ class NOTE desk
 
 ## 1. Master Flowchart — Full System Detail
 
-*Every data source, every cleaning/validation step, every feature group, every model, every validation mechanism, every output. This is the "zoom all the way in" view.*
+_Every data source, every cleaning/validation step, every feature group, every model, every validation mechanism, every output. This is the "zoom all the way in" view._
 
 ```mermaid
 flowchart TD
@@ -348,7 +346,6 @@ T6 -.validates.-> MDL
 T7 -.validates.-> BT
 T8 -.validates.-> DASH
 ```
-
 
 ### another one
 
