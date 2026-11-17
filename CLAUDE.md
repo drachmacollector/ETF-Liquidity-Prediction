@@ -22,7 +22,7 @@ Document map: `docs/00_INDEX.md`. Rationale and facts: `docs/research/ETF_Stress
 - **Raw data are immutable**; every downloaded or manually dropped file is logged in `data/manifests/ingest_log.jsonl`. Be polite to servers (rate limits, user agent from settings).
 - **Secrets** only in `.env` (gitignored). Never print, log or commit them. Never ask the user to paste keys into chat. Do not put the user's email or personal details in request headers unless the user explicitly chose that in MI-07.
 - **Manual interventions:** when user action is needed, set the MI to `REQUESTED` in `records/MANUAL_ACTIONS.md`, point the user to the guide in `docs/manual/`, continue with independent work, and verify the result when the user reports it done.
-- **Commits:** follow decision D-003 (MI-01). Until D-003 exists, do not commit.
+- **Commits (D-003):** at the end of every phase, once it is VERIFIED, commit and push to `origin main` (https://github.com/drachmacollector/ETF-Liquidity-Prediction). Keep messages short and plain, starting with the phase ID, e.g. `P04: download US ETF prices and NAV history`. Record-only updates: `Update project records`. No attribution lines. Before committing, confirm nothing gitignored (`.env`, `data/raw/`, `data/manual_drop/`, `.venv/`) is staged.
 - **Language in outputs:** descriptive only; no buy/sell/recommend wording; every brief and view carries "Model estimate. Not investment advice."
 
 ## Recording work

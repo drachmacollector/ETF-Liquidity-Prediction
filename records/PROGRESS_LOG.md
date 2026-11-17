@@ -11,3 +11,8 @@ Format and rules: [`docs/process/Documentation_Logging_and_Phase_Gates.md`](../d
 - Not done: no code, no data download (build starts at P00).
 - Decisions: D-000, D-002 recorded.
 - Next step: start P00 in a Claude Code session; request MI-01.
+
+## 2026-11-17 — Documentation — session 2
+- Done: Recorded the user's commit policy (D-003: commit and push after every verified phase, simple messages) and terms-of-use acceptance (D-004). MI-01 and MI-07 marked VERIFIED. Confirmed `origin` points to github.com/drachmacollector/ETF-Liquidity-Prediction and `main` is in sync.
+- Updated: CLAUDE.md, P00 T00.9 and the phase-gate protocol to state the commit rule.
+- Next step: start P00. First user step after that: MI-02 (Tiingo API key) in P01.

@@ -141,7 +141,7 @@ At the end of each phase:
 1. **Self-check (executing agent):** run the phase's acceptance test and full test suite; evaluate each acceptance criterion; fill `records/acceptance/PXX_acceptance.md` with evidence (command outputs, file paths, run IDs, numbers). Mark the phase `IMPLEMENTED`.
 2. **Walkthrough:** write `records/walkthroughs/PXX_walkthrough.md` from the template.
 3. **Orchestrator verification:** the orchestrating agent (or the same agent in a fresh session, which must not rely on memory of the implementation) performs the phase's "Verification checklist", re-runs at least the acceptance test independently, and either countersigns the acceptance report or lists defects. Defects go to `ISSUES.md` and the phase stays `IMPLEMENTED` until fixed.
-4. **Mark VERIFIED:** update STATUS and PROGRESS_LOG; commit under the commit policy (D-003).
+4. **Mark VERIFIED:** update STATUS and PROGRESS_LOG; then commit and push to `origin main` (D-003). The message is short, plain English, starts with the phase ID and says what was achieved, e.g. `P09: find price-NAV dislocation episodes and build targets`. At most one extra line for something important. No attribution lines.
 5. **Gate for the next phase:** the next phase's prerequisites checklist is evaluated and recorded at the top of its walkthrough.
 
 A phase is never `VERIFIED` merely because code exists. The Global Definition of Done is in System Specification §14.

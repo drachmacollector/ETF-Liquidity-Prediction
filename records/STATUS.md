@@ -2,16 +2,17 @@
 
 Single source of truth for **actual** progress. Status vocabulary and update rules: [`docs/process/Documentation_Logging_and_Phase_Gates.md`](../docs/process/Documentation_Logging_and_Phase_Gates.md) §3.
 
-**Last updated:** 2026-11-17 — documentation set created; no build work started.
+**Last updated:** 2026-11-17 — documentation set created and pushed; MI-01 and MI-07 done (D-003, D-004); no build work started.
 **Current phase:** P00 (NOT_STARTED)
-**Waiting on user:** MI-01 (commit policy) will be requested in P00.
+**Waiting on user:** nothing yet. Next user step will be MI-02 (Tiingo API key) during P01.
+**Commit policy:** commit and push after every verified phase, simple messages (D-003).
 
 ## Phases
 
 | Phase | Title | Status | Started | Implemented | Verified | Walkthrough | Acceptance | Blockers | Notes |
 |---|---|---|---|---|---|---|---|---|---|
 | P00 | Environment, repository and governance | NOT_STARTED | | | | | | | |
-| P01 | Source verification and access probes | NOT_STARTED | | | | | | | Needs MI-02, MI-07 |
+| P01 | Source verification and access probes | NOT_STARTED | | | | | | | Needs MI-02 (MI-07 done) |
 | P02 | Reference data: universe, identifiers, calendars | NOT_STARTED | | | | | | | May need MI-09 |
 | P03 | Incident and operational-event catalogue | NOT_STARTED | | | | | | | Needs MI-08 |
 | P04 | US ETF data acquisition | NOT_STARTED | | | | | | | May need MI-04, MI-06 |

@@ -100,7 +100,7 @@ Ignore: `.venv/`, `.env`, `__pycache__/`, `*.pyc`, `.pytest_cache/`, `.ruff_cach
 ### T00.9 Records and commit policy
 
 1. Confirm `records/STATUS.md`, `PROGRESS_LOG.md`, `DECISIONS.md`, `ISSUES.md`, `OPEN_QUESTIONS.md`, `MANUAL_ACTIONS.md` exist (they are created with the documentation). Set P00 to `IN_PROGRESS` at the start.
-2. Ask the user to complete **MI-01** (commit policy; optional GitHub remote). Record the answer as decision **D-003**. Until D-003 exists, do not commit; leave changes in the working tree and say so in the walkthrough.
+2. **MI-01 is already done** (D-003, 17 Nov 2026): commit and push to `origin main` after every verified phase, with short plain messages (e.g., `P00: set up Python project and tools`). Confirm `git remote -v` shows the GitHub repository, then commit and push P00 when it is VERIFIED.
 
 ## 5. Deliverables
 
