@@ -23,3 +23,12 @@ Format and rules: [`docs/process/Documentation_Logging_and_Phase_Gates.md`](../d
 - MI-02: user added the Tiingo key; verified with two API calls (200). Tiingo needs `Content-Type: application/json`.
 - Decisions: D-001 (uv). Ruff now excludes docs/archive/records/reports.
 - Status: P00 VERIFIED. Next step: P01 source probes.
+
+## 2026-11-17 — P01 — session 1
+- Done: Probe framework and `esw probe` CLI; 32 probes across US prices/NAV, India prices/NAV/spot, market series and calendars (runs `20261117-155940_probe`, `20261117-161616_probe`; 273 matrix rows; 278 manifest lines). Parsers for every confirmed format with golden fixtures; feasibility report and source registry; `sources` block in settings.
+- Primary texts read: Rule 6c-11 (excludes UITs and commodity trusts), SEBI 26 Feb 2026 circular (old NAV included a notional premium → D-005, docs v1.1), Mirae Silver ETF SID (direct-redemption triggers verbatim; inception 9 Jun 2023), NSE closing auction (F&O only from 3 Aug 2026).
+- Key results: US scripted NAV for 28/49 candidates (SPDR Gold, iShares, SSGA); USCF/Global X and others manual; RSX/EGPT/ERUS NAV unavailable. NSE archive scriptable from 2016. AMFI API gives NAV upload timestamps. Feasibility gate PASS with manual dependencies.
+- Issues: I-001 to I-005 opened. Decisions: D-005 to D-009.
+- Note: one exploratory request tried a browser-like user agent; the environment blocked it; approach dropped; no results use it.
+- Requested from user: MI-04 (essentials USO, UNG, GREK), MI-05 (domestic spot), MI-06 (optional).
+- Status: P01 VERIFIED. Next: P02 (reference data), which does not wait on the manual items.

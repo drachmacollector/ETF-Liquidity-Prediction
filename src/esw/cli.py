@@ -123,5 +123,32 @@ def doctor(
     typer.echo("\nAll checks passed.")
 
 
+@app.command()
+def probe(
+    source_ids: list[str] = typer.Argument(None, help="Probe IDs to run (default: all)."),
+    list_only: bool = typer.Option(False, "--list", help="List available probes and exit."),
+) -> None:
+    """P01: run small, polite probes of data sources and update reports/data/source_probe_matrix.csv."""
+    from esw.ingest.probe import ProbeRunner, all_probe_ids, matrix_path, run_probes
+
+    ids = all_probe_ids()
+    if list_only:
+        typer.echo(chr(10).join(ids))
+        return
+    chosen = source_ids or ids
+    settings = get_settings()
+    with RunContext(phase="P01", purpose="source probes", slug="probe", settings=settings) as run:
+        runner = ProbeRunner(settings, run_id=run.run_id)
+        rows = run_probes(chosen, runner)
+        summary: dict[str, int] = {}
+        for row in rows:
+            summary[row.status] = summary.get(row.status, 0) + 1
+        run.notes = f"Probes run: {', '.join(chosen)}"
+        run.log_metrics(
+            {"probes": len(chosen), "rows": len(rows), **{f"status_{k}": v for k, v in summary.items()}}
+        )
+    typer.echo(f"{len(rows)} rows written to {matrix_path(settings)}: {summary}")
+
+
 if __name__ == "__main__":
     app()

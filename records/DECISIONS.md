@@ -46,3 +46,33 @@ Format, scope and approval rules: [`docs/process/Documentation_Logging_and_Phase
 - Decision: `uv` 0.13.9 installed via pip. Environment: `.venv/` created by `uv sync --all-extras --python 3.11`; lockfile `uv.lock` (104 packages). Run commands with `.venv/Scripts/python.exe -m esw …` or `python -m uv run esw …`.
 - Consequences: Recreate the environment with `python -m pip install uv` then `python -m uv sync --all-extras`.
 - Reversible: yes
+
+### D-005 — Indian NAV before 1 Apr 2026 included a notional delivery premium (correction)
+- Date: 2026-11-17 · Phase: P01 · Decided by: agent (correction of a factual statement, evidence-based)
+- Context: The Research Document assumed NAV = import parity before Apr 2026 (`LP_NAV ≈ 0`). SEBI's circular of 26 Feb 2026 (para 1) says the old valuation added transport, duty, taxes "and factoring notional premium or discount"; the Mirae Silver ETF SID describes it as "a notional premium that is usually charged for delivery of silver to the place where it is stored".
+- Decision: `LP_NAV` before 2026-04-01 = a small, slow-moving notional delivery premium (estimated empirically in P08), not 0. Research Document → v1.1 (§4.1, §4.3); System Specification → v1.1 (§4.4).
+- Consequences: P08 estimates the notional premium from NAV vs parity; the Oct 2025 interpretation (squeeze premium largely outside NAV) stands.
+- Reversible: yes
+
+### D-006 — Data source choices and fallbacks (from the P01 probes)
+- Date: 2026-11-17 · Phase: P01 · Decided by: agent (within delegated scope; follows the D-004 access rules)
+- Decision: US prices: Tiingo (primary, ≤ 45 requests/hour) → yfinance (fallback); Stooq dropped (browser check). US NAV: SPDR Gold archive, iShares and SSGA scripted; USCF, Invesco, Global X, Xtrackers, abrdn, Teucrium and Vanguard manual (MI-04); RSX/EGPT/ERUS unavailable unless CRSP (MI-06). India prices: NSE archive host (archives.nseindia.com) from 2016-01-01; before 2016 yfinance `.NS` or manual (MI-05); BSE dropped. India NAV: AMFI API (with upload timestamps) → mfapi.in. Domestic spot: manual (MI-05). India VIX: yfinance `^INDIAVIX`. Credit spread: FRED `BAA10Y` (ICE BofA OAS truncated). Futures curve: EIA to 2024-04-05, yfinance single contracts afterwards. No source is accessed by imitating a browser or bypassing bot protection.
+- Consequences: Recorded in `config/settings.yaml: sources` and `reference/source_registry.csv`.
+- Reversible: yes
+
+### D-007 — Classify Indian ETFs by scheme name, not AMFI category
+- Date: 2026-11-17 · Phase: P01 · Decided by: agent
+- Context: AMFI files similar ETFs under inconsistent categories (GOLDBEES under "Other Scheme - Gold ETF"; ICICI Silver ETF under "Other ETFs"; ABSL Gold ETF under "Equity ETF").
+- Decision: `esw.ingest.candidates.classify_india()` assigns IN_GOLD/IN_SILVER/IN_INTL/IN_DEBT from the scheme name, restricted to ETF categories and excluding FoFs and index funds. P02 hand-verifies the result.
+- Reversible: yes
+
+### D-008 — Indian NAV `known_at` = AMFI upload timestamp (IST)
+- Date: 2026-11-17 · Phase: P01 · Decided by: agent
+- Context: The AMFI API returns an upload time per NAV (labelled "Z" but it is IST wall-clock time). Most uploads are 22:00–23:00 IST; some are after midnight (02:00 observed).
+- Decision: System Specification §7 updated: use the upload timestamp; fallback t 23:59 IST where unavailable. Decision time τ(t) = 08:00 IST on t+1 is unchanged and still after all observed uploads.
+- Reversible: yes
+
+### D-009 — Universe feasibility gate: PASS with manual dependencies
+- Date: 2026-11-17 · Phase: P01 · Decided by: agent (gate rule in P01 T01.8)
+- Decision: The gate passes when FEASIBLE_MANUAL instruments count, as T01.8 allows. The essential manual items (USCF: USO and UNG; Global X: GREK) become an **entry condition for completing P04**. If they cannot be obtained, the loss of coverage (capacity-type futures incidents; closure-type international incidents) goes to the user for a decision before P07.
+- Reversible: yes

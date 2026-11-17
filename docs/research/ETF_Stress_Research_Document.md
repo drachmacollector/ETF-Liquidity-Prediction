@@ -4,7 +4,7 @@
 | Field | Value |
 |---|---|
 | Document ID | RD-01 |
-| Version | 1.0 (first full edition for the revised direction) |
+| Version | 1.1 (P01 corrections: Indian NAV basis before Apr 2026; data-source results) |
 | Research as-of date | 17 November 2026 (IST) |
 | Status | **Active: single source of truth for the "why" and "what"**. The "how" lives in [`docs/technical/`](../technical/). |
 | Source proposals | [`docs/source/ETF Arbitrage-Stress Early Warning System.pdf`](../source/) (the proposal) and [`docs/source/ETF_Stress_Early_Warning_Brief.pdf`](../source/) (the one-page brief prepared for the Mirae Asset ETF team) |
@@ -190,7 +190,7 @@ Three points from this taxonomy drive the design.
 | Investment-grade / high-yield bonds | LQD, HYG, JNK | Vendor-evaluated bid prices at ~16:00 ET; many bonds do not trade daily [K/V] | In stress, NAV lags the market; the ETF shows a discount that is really a stale NAV (March 2020) |
 | International equity | EWJ, EWH, FXI, EGPT, GREK, RSX | Local closing prices (possibly fair-valued) [K] | Timing gap of many hours; closures make NAV completely stale |
 | Domestic equity (controls) | SPY, IVV, QQQ | 16:00 ET closing prices [K] | Gaps of a few basis points |
-| Indian gold/silver ETFs (until 31 Mar 2026) | GOLDBEES, SILVERBEES, Mirae `GOLDETF`, `SILVERAG` | LBMA AM price in USD, converted at the RBI reference rate, plus customs duty and charges [R] | Domestic physical premium sat *outside* NAV, so it showed up as an ETF premium (Oct 2025) |
+| Indian gold/silver ETFs (until 31 Mar 2026) | GOLDBEES, SILVERBEES, Mirae `GOLDETF`, `SILVERAG` | LBMA AM fixing, converted to rupees, plus transport, customs duty, taxes and levies, and a *notional premium or discount* (per scheme documents: the premium usually charged for delivery of metal to where it is stored) [V: SEBI circular 26 Feb 2026 para 1; Mirae Silver ETF SID] | The domestic **squeeze** premium sat largely *outside* NAV (only a small notional delivery premium was inside), so it showed up as an ETF premium (Oct 2025) |
 | Indian gold/silver ETFs (from 1 Apr 2026) | same | **Polled spot prices from recognised exchanges used to settle physically delivered derivatives (currently MCX; BSE also mentioned)**, under an AMFI uniform policy [V: SEBI circular HO/(68)2026-IMD-POD-2/I/5780/2026, 26 Feb 2026, per multiple reports] | Domestic premium now sits *inside* NAV; the ETF premium measures only exchange-level arbitrage friction |
 | Indian international ETFs | Mirae `MAFANG`, `MASPTOP50`, Hang Seng TECH ETF; Motilal `MON100` | Overseas closing prices of the previous day [K] | Structural premium under the overseas cap plus a timing gap |
 
@@ -220,9 +220,9 @@ Definitions used throughout the project (full formulas in the System Specificati
 
 - **Layer 1, local-market premium**: `LP_t = D_t / (G_t × FX_t × (1 + duty_t)) − 1`, where `D` is the domestic spot price, `G` the global price in USD, `FX` USD/INR, and `duty` the effective import duty rate in force on day t.
 - **Layer 2, ETF premium**: `prem_t = P_t / NAV_t − 1`.
-- **Total investor gap vs global parity**: `TG_t = (1 + prem_t)(1 + LP^NAV_t) − 1`, where `LP^NAV_t` is the Layer-1 premium embedded in NAV. Before 1 Apr 2026 `LP^NAV ≈ 0` by construction (NAV was import parity); after that date `LP^NAV ≈ LP_t`.
+- **Total investor gap vs global parity**: `TG_t = (1 + prem_t)(1 + LP^NAV_t) − 1`, where `LP^NAV_t` is the Layer-1 premium embedded in NAV. Before 1 Apr 2026 `LP^NAV` was a small, slow-moving notional delivery premium (NAV ≈ import parity + notional premium; estimated empirically in P08); after that date `LP^NAV ≈ LP_t`.
 
-**Why this matters.** In October 2025 the domestic silver premium rose from about 0.5% in early September to 5.7% on 9 October (intraday peaks near 12%) according to Kotak Mutual Fund [R]. Because NAV was then import-parity based, silver ETFs showed 5–10% premiums to NAV. If the same squeeze happened today, NAV would rise with domestic spot, and the ETF premium to NAV could stay small while investors still overpay versus the global price. A model trained on "ETF premium to NAV" alone would see a structural break on 1 April 2026. The project therefore:
+**Why this matters.** In October 2025 the domestic silver premium rose from about 0.5% in early September to 5.7% on 9 October (intraday peaks near 12%) according to Kotak Mutual Fund [R]. Because NAV was then based on import parity plus only a small notional delivery premium, silver ETFs showed 5–10% premiums to NAV. If the same squeeze happened today, NAV would rise with domestic spot, and the ETF premium to NAV could stay small while investors still overpay versus the global price. A model trained on "ETF premium to NAV" alone would see a structural break on 1 April 2026. The project therefore:
 
 - tracks Layer 1, Layer 2 and the total gap separately for Indian commodity ETFs;
 - defines the Indian label on Layer 2 (the arbitrage-friction gap, comparable with US ETFs), and reports Layer-1 episodes as a separate, deterministic monitor;
@@ -480,6 +480,8 @@ No public, forecast-oriented, backtested system was found (as of 17 Nov 2026) th
 ---
 
 ## 9. The data landscape
+
+> **P01 update (17 Nov 2026):** every source below was probed. Results, including which sources are scriptable, manual-only or unavailable, are in [`reports/data/source_probe_report.md`](../../reports/data/source_probe_report.md) and [`reference/source_registry.csv`](../../reference/source_registry.csv). Where they differ from the planning tables below, the P01 results win. Key changes: Stooq dropped; NSE archive scriptable only from 2016; RSX/EGPT/ERUS NAV unavailable without CRSP; USCF NAV manual (no shares outstanding); AMFI API provides NAV upload timestamps; EIA futures end 2024-04-05.
 
 ### 9.1 United States: ETF-level data
 
@@ -785,3 +787,12 @@ Status is tracked live in [`records/OPEN_QUESTIONS.md`](../../records/OPEN_QUEST
 24. Import-duty reporting (conflicting; verify via CBIC): https://www.newsbytesapp.com/news/business/union-budget-2026-no-change-in-gold-silver-import-duties/story ; https://www.iifl.com/blogs/gold-loan/how-union-budget-customs-duty-announcements-move-gold-prices-in-india
 
 **Carried forward from the archived v1 research (not re-verified in this pass)**: SEBI MF master circular (20 Mar 2026), SEBI ETF band circulars (15 Jun and 28 Aug 2026), NSE circulars on ETF parameters and pre-open, Mirae product identifiers and SIDs, Feb 2026 crash chronology. See [`archive/v1_gold_silver_premium_forecaster/`](../../archive/v1_gold_silver_premium_forecaster/) §6 and §12 of the research document there.
+
+---
+
+## Change log
+
+| Version | Date | Change | Decision |
+|---|---|---|---|
+| 1.0 | 2026-11-17 | First full edition | D-000 |
+| 1.1 | 2026-11-17 | §4.1, §4.3: Indian NAV before Apr 2026 included a notional delivery premium (primary text). §9: pointer to P01 source results. | D-005, D-006 |

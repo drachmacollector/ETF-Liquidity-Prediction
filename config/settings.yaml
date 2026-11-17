@@ -65,4 +65,40 @@ http:                         # §11 polite data access
 runtime:
   num_threads: 4
 
-sources: {}                   # filled in P01 (source registry, URL patterns, fallbacks)
+sources:                      # confirmed in P01 (reports/data/source_probe_report.md; reference/source_registry.csv)
+  us_prices:
+    order: [us_px_tiingo, us_px_yf]
+    tiingo_url: https://api.tiingo.com/tiingo/daily/{ticker}/prices
+    tiingo_headers: {Content-Type: application/json}   # plus Authorization: Token <TIINGO_API_KEY>
+    tiingo_requests_per_hour: 45                        # free tier ~50/hour; stay below
+  us_nav:
+    spdr_gold: https://api.spdrgoldshares.com/api/v1/historical-archive?product={product}&exchange=NYSE&lang=en
+    ishares_screener: https://www.ishares.com/us/product-screener/product-screener-v3.1.jsn?dcrPath=/templatedata/config/product-screener-v3/data/en/us-ishares/ishares-product-screener-backend-config&siteEntryPassthrough=true
+    ishares_download: https://www.blackrock.com/varnish-api/blk-one01-product-data/product-data/api/v1/get-fund-document?appType=PRODUCT_PAGE&appSubType=ISHARES&targetSite=us-ishares&locale=en_US&portfolioId={pid}&component=fundDownload&userType=individual
+    ssga_navhist: https://www.ssga.com/us/en/intermediary/library-content/products/fund-data/etfs/us/navhist-us-en-{ticker}.xlsx
+    manual_drop_sources: [us_iss_uscf, us_iss_invesco, us_iss_globalx, us_iss_xtrackers, us_iss_abrdn, us_iss_teucrium, us_iss_vanguard]
+  sec_edgar:
+    submissions: https://data.sec.gov/submissions/CIK{cik10}.json
+    max_requests_per_second: 5
+  india_prices:
+    nse_archive_host: https://archives.nseindia.com/content
+    udiff_from: 2024-07-08
+    udiff_path: /cm/BhavCopy_NSE_CM_0_0_0_{yyyymmdd}_F_0000.csv.zip
+    legacy_path: /historical/EQUITIES/{yyyy}/{MON}/cm{dd}{MON}{yyyy}bhav.csv.zip
+    archive_scriptable_from: 2016-01-01                 # earlier files return 403 to scripts
+    pre_2016_fallback: yfinance (.NS symbols, from 2009 for some ETFs) or manual (MI-05)
+    min_seconds_between_requests: 2.0
+  india_nav:
+    order: [in_amfi_hist, in_mfapi]
+    amfi_api: https://www.amfiindia.com/api/nav-history   # query_type=historical_period (max 5 years) | all_for_date; data from 2010-01-01
+    amfi_navall: https://portal.amfiindia.com/spages/NAVAll.txt
+    mfapi: https://api.mfapi.in/mf/{scheme_code}
+    upload_time_tz: Asia/Kolkata                         # AMFI labels upload times "Z" but they are IST
+  india_spot:
+    sources: [in_spot_mcx, in_spot_ibja]                  # manual only (MI-05)
+  india_vix: yfinance ^INDIAVIX
+  market:
+    fred_csv: https://fred.stlouisfed.org/graph/fredgraph.csv?id={series_id}
+    eia_xls: https://www.eia.gov/dnav/{area}/hist_xls/{code}d.xls  # ends 2024-04-05
+    yfinance_contracts_after: 2024-04-05
+    credit_spread_series: BAA10Y                          # ICE BofA OAS truncated on FRED

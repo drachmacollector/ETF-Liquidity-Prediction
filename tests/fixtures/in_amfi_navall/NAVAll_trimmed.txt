@@ -1,0 +1,7 @@
+Scheme Code;ISIN Div Payout/ ISIN Growth;ISIN Div Reinvestment;Scheme Name;Plan;Option;Net Asset Value;Date
+Open Ended Schemes(Exchange Traded Funds (ETFs) - Silver ETF)
+Mirae Asset Mutual Fund
+151779;INF769K01KG6;-;Mirae Asset Silver ETF;;;165.0067;16-Nov-2026
+Open Ended Schemes(Other Scheme - Gold ETF)
+Nippon India Mutual Fund
+140088;INF204KB17I5;-;Nippon India ETF Gold BeES;Direct Plan;;110.4125;16-Nov-2026

@@ -4,7 +4,7 @@
 | Field | Value |
 |---|---|
 | Document ID | TS-00 |
-| Version | 1.0 |
+| Version | 1.1 (P01: §4.4 notional premium; §7 AMFI upload timestamps) |
 | As-of | 17 November 2026 |
 | Status | Active. **Canonical**: where a phase document and this document disagree on a definition, this document wins until a logged decision changes it. |
 | Read with | [Research Document](../research/ETF_Stress_Research_Document.md) (why), [phase documents](phases/) (what to build, in order), [process](../process/Documentation_Logging_and_Phase_Gates.md) (how progress is recorded and verified) |
@@ -164,7 +164,8 @@ Rows with missing `P` or `NAV`, zero/negative values, or `lock_class ∈ {confir
 ```
 parity(t)   = G(t) × FX(t) × (1 + duty(t))                 # import parity in local currency per unit of metal
 LP(t)       = 10,000 × ( D(t) / parity(t) − 1 )            # Layer 1, bps
-LP_NAV(i,t) = 0                         if NAV basis(i,t) = import_parity     (India gold/silver before 2026-04-01)
+LP_NAV(i,t) = NP(i,t)                   if NAV basis(i,t) = import_parity     (India gold/silver before 2026-04-01; NP = notional
+                                                                                delivery premium, estimated in P08 from NAV vs parity)
             = LP(t)                     if NAV basis(i,t) = domestic_spot      (India gold/silver from 2026-04-01)
 TG(i,t)     = 10,000 × ( (1 + prem/1e4) × (1 + LP_NAV/1e4) − 1 )   # total investor gap vs global parity, bps
 ```
@@ -428,7 +429,7 @@ All tables carry `source` (string), `ingested_at` (UTC timestamp) and, where rel
 | US close/OHLCV for date t | t 16:15 America/New_York |
 | US NAV, shares outstanding for date t | t 20:00 America/New_York (conservative; issuers publish in the evening). If an issuer is known to publish next morning, `t+1 07:00` |
 | India bhavcopy for date t | t 18:00 Asia/Kolkata |
-| AMFI NAV for date t | t 23:30 Asia/Kolkata |
+| AMFI NAV for date t | The AMFI upload timestamp (IST) when available (AMFI API, from 2010); otherwise t 23:59 Asia/Kolkata. Uploads after midnight occur (P01 observed 02:00 IST), so never assume same-evening availability |
 | AMFI monthly AUM | Actual publication date (if unknown: the 10th calendar day of the following month, 18:00 IST) |
 | FRED and other series | date t + publication lag (series catalogue), 18:00 local of the source |
 | Scheduled calendars (holidays, foreign closures announced in advance) | Treated as known at all times **only** for scheduled holidays in the official calendar; unscheduled closures use their event `known_at` |
@@ -579,3 +580,12 @@ A phase is `VERIFIED` only when **all** of these hold:
 5. `records/STATUS.md`, `records/PROGRESS_LOG.md`, and, as applicable, `records/DECISIONS.md`, `records/ISSUES.md`, `records/OPEN_QUESTIONS.md` and `records/MANUAL_ACTIONS.md` are updated.
 6. Any manual intervention the phase required is recorded as `DONE` and verified.
 7. Work is committed under the commit policy recorded in P00 (decision D-003).
+
+---
+
+## Change log
+
+| Version | Date | Change | Decision |
+|---|---|---|---|
+| 1.0 | 2026-11-17 | First edition | D-000 |
+| 1.1 | 2026-11-17 | §4.4: `LP_NAV` before 2026-04-01 is a notional delivery premium, not 0. §7: AMFI NAV `known_at` uses the upload timestamp | D-005, D-008 |
