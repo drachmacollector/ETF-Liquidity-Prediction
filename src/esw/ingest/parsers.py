@@ -170,14 +170,18 @@ def parse_nse_bhavcopy(raw: bytes) -> pd.DataFrame:
         df["source_schema"] = "udiff"
     elif "SYMBOL" in df.columns:
         df = df.rename(columns=BHAV_LEGACY_MAP)
-        df["date"] = pd.to_datetime(df["date"], format="%d-%b-%Y")
+        df["date"] = pd.to_datetime(df["date"].str.strip(), format="%d-%b-%Y")
         df["source_schema"] = "legacy"
+        # Early legacy files (before ~2010) have no ISIN or TOTALTRADES column.
+        for c in ("isin", "n_trades"):
+            if c not in df.columns:
+                df[c] = pd.NA
     else:
         raise ValueError(f"unknown bhavcopy schema: {list(df.columns)[:8]}")
     for c in ("open", "high", "low", "close", "last", "prev_close", "volume", "traded_value", "n_trades"):
         df[c] = pd.to_numeric(df[c], errors="coerce")
     for c in ("isin", "symbol", "series"):
-        df[c] = df[c].str.strip()
+        df[c] = df[c].astype("string").str.strip()
     return df[BHAV_COLUMNS].reset_index(drop=True)
 
 
@@ -299,3 +303,65 @@ def parse_amfi_historical_period(raw: bytes) -> pd.DataFrame:
                 }
             )
     return pd.DataFrame(rows)
+
+
+# --------------------------------------------------------------------------- manual drops (MI-04, MI-05)
+def parse_uscf_navhist(raw: bytes) -> pd.DataFrame:
+    """USCF "Download Historical NAV Performance" CSV (USO, UNG, BNO, CPER, ...).
+
+    Layout: a title line ("USO Historical NAV Performance"), then `Date,NAV Value` with US dates and
+    `$`-prefixed values. NAVs are **not** split-adjusted in this file (USO jumps x8 on 2020-04-29).
+    """
+    text = raw.decode("utf-8-sig")
+    lines = text.splitlines()
+    start = next(i for i, ln in enumerate(lines) if ln.strip().lower().startswith("date,"))
+    df = pd.read_csv(io.StringIO("\n".join(lines[start:])), dtype=str)
+    df.columns = ["date", "nav"]
+    df["date"] = pd.to_datetime(df["date"].str.strip(), format="%m/%d/%Y")
+    df["nav"] = pd.to_numeric(df["nav"].str.replace(r"[$,\s]", "", regex=True), errors="coerce")
+    return df.dropna(subset=["nav"]).sort_values("date").reset_index(drop=True)
+
+
+def parse_globalx_premium_discount(raw: bytes) -> pd.DataFrame:
+    """Global X "premium/discount" CSV (GREK). NAV is derived as market price - premium ($).
+
+    Rows with a zero market price are placeholders (no data) and are dropped. Values are rounded
+    to cents, so the derived NAV is accurate to about ±$0.01.
+    """
+    df = pd.read_csv(io.BytesIO(raw), dtype=str)
+    df.columns = [c.strip() for c in df.columns]
+    out = pd.DataFrame(
+        {
+            "date": pd.to_datetime(df["Date"].str.strip(), format="%Y-%m-%d"),
+            "close": pd.to_numeric(df["Market Price"], errors="coerce"),
+            "premium_usd": pd.to_numeric(df["Premium/Discount"], errors="coerce"),
+            "issuer_prem_pct": pd.to_numeric(df["Premium/Discount %"], errors="coerce"),
+        }
+    )
+    out = out[out["close"] > 0].copy()
+    out["nav"] = (out["close"] - out["premium_usd"]).round(4)
+    return out.sort_values("date").reset_index(drop=True)
+
+
+def parse_mcx_spot(raw: bytes) -> pd.DataFrame:
+    """MCX "Spot Market Price" export (an HTML table saved as .xls). One row per poll.
+
+    Columns: commodity, unit, location, spot_price (INR), date, time, polled_at_ist.
+    """
+    tables = pd.read_html(io.StringIO(raw.decode("utf-8", errors="replace")))
+    df = tables[0]
+    df.columns = [str(c).strip() for c in df.columns]
+    out = pd.DataFrame(
+        {
+            "commodity": df["Commodity"].astype(str).str.strip(),
+            "unit": df["Unit"].astype(str).str.strip(),
+            "location": df["Location"].astype(str).str.strip(),
+            "spot_price": pd.to_numeric(df["Spot Price(Rs.)"], errors="coerce"),
+            "date": pd.to_datetime(df["Date"].astype(str).str.strip(), format="%d %b %Y"),
+            "time": df["Time"].astype(str).str.strip(),
+        }
+    )
+    out["polled_at_ist"] = pd.to_datetime(
+        out["date"].dt.strftime("%Y-%m-%d") + " " + out["time"], format="%Y-%m-%d %H:%M"
+    ).dt.tz_localize("Asia/Kolkata")
+    return out.sort_values("polled_at_ist").reset_index(drop=True)

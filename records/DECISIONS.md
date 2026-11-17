@@ -76,3 +76,36 @@ Format, scope and approval rules: [`docs/process/Documentation_Logging_and_Phase
 - Date: 2026-11-17 · Phase: P01 · Decided by: agent (gate rule in P01 T01.8)
 - Decision: The gate passes when FEASIBLE_MANUAL instruments count, as T01.8 allows. The essential manual items (USCF: USO and UNG; Global X: GREK) become an **entry condition for completing P04**. If they cannot be obtained, the loss of coverage (capacity-type futures incidents; closure-type international incidents) goes to the user for a decision before P07.
 - Reversible: yes
+
+### D-010 — Automation first: browser-like clients allowed for public data files
+- Date: 2026-11-17 · Phase: P02 (between P01 and P02) · Decided by: user
+- User's words: "it is completely and absolutely okay for you to do this, anything that would lessen the manual steps and automate the implementation process is more than welcome."
+- Context: In P01 the agent dropped a browser-like user-agent fallback and routed several sources to manual downloads (MI-04/MI-05).
+- Decision: Automated download is tried first. A browser-like user agent and headers, session cookies and page-issued tokens may be used to fetch publicly downloadable files (`PoliteSession(browser=True)`). Rate limits and back-off still apply. SEC EDGAR keeps the declared generic project user agent (D-004). Manual interventions are raised only when automation fails.
+- Consequences: CLAUDE.md, System Specification §11 (v1.2), `esw.ingest.http` and the MI-04 guide updated. Immediate gains in P02: the NSE archive host `nsearchives.nseindia.com` serves bhavcopies back to 2007 (P01 had 2016), and the BSE bhavcopy is downloadable. P04 retries the remaining MI-04 issuer files automatically.
+- Reversible: yes
+
+### D-011 — No CRSP (MI-06 declined: institution not registered with WRDS)
+- Date: 2026-11-17 · Phase: P02 · Decided by: user (fact) / agent (consequence)
+- Decision: Continue with free sources only. RSX, EGPT and ERUS stay `include = false` (I-005) and their incidents are catalogue-only in P03. USO/UNG shares outstanding stay missing (I-001); creation-activity features are missing-aware for these funds. The EDGE spread estimator is not validated against CRSP quotes (P10 assumption AS-04 stays an assumption).
+- Reversible: yes (if CRSP access appears before P07)
+
+### D-012 — P02 universe and identifier rules
+- Date: 2026-11-17 · Phase: P02 · Decided by: agent (within P02 scope)
+- Decision:
+  1. US: every §5.2 candidate has a row. `FEASIBLE` and `FEASIBLE_MANUAL` rows are `include = true`; those whose NAV file has not arrived are marked "NAV pending" and flip to `false` in P04 if automation and MI-04 both fail. RSX, EGPT, ERUS are `false` (I-005).
+  2. India: the instrument key is the **current** ISIN. A fund's NSE symbol and ISIN can change (AMC mergers, renames); P02 links them into one lineage from NSE bhavcopies and records every (symbol, ISIN) period in `symbol_history` (new column `isin`). Listing date = first bhavcopy appearance of the lineage, found by bisection of monthly samples.
+  3. India controls: NIFTYBEES, SBINIFTY50 (formerly SETFNIF50), BANKBEES, JUNIORBEES, SENSEXIETF and Mirae NIFTYETF. Debt ETFs other than liquid/overnight are included (optional group). Gold/silver ETFs that were delisted or merged stay in the table as `include = false` for survivorship.
+  4. Extra column `cik` in `instruments_us` (SEC registrant) for EDGAR work in P03/P04.
+- Reversible: yes
+
+### D-013 — Duty and price-band table conventions
+- Date: 2026-11-17 · Phase: P02 · Decided by: agent
+- Decision: (a) A duty change announced in a Budget speech is in force from the day after the speech (customs notifications issued on Budget day). (b) A row is `verified = y` only when the rate is in a primary document read by the agent (Budget speech or its annex, exchange circular); rates seen only in secondary reports stay `n` and are listed in MI-09. (c) Layer 1 is computed only for verified duty periods; lock class is `unknown` for unverified band rows (System Specification §4.4, §4.11). (d) The May 2026 duty increase (to 15%) is recorded as reported but unverified.
+- Reversible: yes
+
+### D-014 — Correction: USCF NAV download is not split-adjusted
+- Date: 2026-11-17 · Phase: P02 · Decided by: agent (evidence)
+- Context: P01 (OQ-04, primary_text_notes §5) quoted the USCF page saying NAV history is adjusted for the 2020 reverse split. The CSV received in MI-04 is raw: USO NAV jumps from 2.04 to 17.22 on 2020-04-29 and UNG shows four jumps (2011, 2012, 2018, 2024). BNO's NAV halves on 2013-08-28, one trading day before its price ex-date (2013-08-29).
+- Decision: Treat the USCF file as unadjusted. All US splits are seeded in `reference/corporate_actions_manual.csv` with `applies_to` saying which raw series shows the jump (iShares NAV files are adjusted, so iShares splits apply to price only). OQ-04 amended.
+- Reversible: yes

@@ -1,0 +1,30 @@
+date,is_trading,session_type,reason,apply,verified,source_url
+2007-11-09,y,special,Muhurat trading (Diwali 2007),y,y,https://nsearchives.nseindia.com/content/historical/EQUITIES/2007/NOV/cm09NOV2007bhav.csv.zip
+2008-10-28,y,special,Muhurat trading (Diwali 2008),y,y,https://nsearchives.nseindia.com/content/historical/EQUITIES/2008/OCT/cm28OCT2008bhav.csv.zip
+2009-10-17,y,special,Muhurat trading (Diwali 2009),y,y,https://nsearchives.nseindia.com/content/historical/EQUITIES/2009/OCT/cm17OCT2009bhav.csv.zip
+2010-11-05,y,special,Muhurat trading (Diwali 2010),y,y,https://nsearchives.nseindia.com/content/historical/EQUITIES/2010/NOV/cm05NOV2010bhav.csv.zip
+2011-02-26,n,,"Budget Saturday: checked, no session",n,y,no NSE bhavcopy found (not a session)
+2011-10-26,y,special,Muhurat trading (Diwali 2011),y,y,https://nsearchives.nseindia.com/content/historical/EQUITIES/2011/OCT/cm26OCT2011bhav.csv.zip
+2012-03-17,n,,"Saturday after Budget: checked, no session",n,y,no NSE bhavcopy found (not a session)
+2012-11-13,y,special,Muhurat trading (Diwali 2012),y,y,https://nsearchives.nseindia.com/content/historical/EQUITIES/2012/NOV/cm13NOV2012bhav.csv.zip
+2013-11-03,y,special,Muhurat trading (Diwali 2013),y,y,https://nsearchives.nseindia.com/content/historical/EQUITIES/2013/NOV/cm03NOV2013bhav.csv.zip
+2014-10-23,y,special,Muhurat trading (Diwali 2014),y,y,https://nsearchives.nseindia.com/content/historical/EQUITIES/2014/OCT/cm23OCT2014bhav.csv.zip
+2015-02-28,y,special,Budget Saturday session,y,y,https://nsearchives.nseindia.com/content/historical/EQUITIES/2015/FEB/cm28FEB2015bhav.csv.zip
+2015-11-11,y,special,Muhurat trading (Diwali 2015),y,y,https://nsearchives.nseindia.com/content/historical/EQUITIES/2015/NOV/cm11NOV2015bhav.csv.zip
+2016-10-30,y,special,Muhurat trading (Diwali 2016),y,y,https://nsearchives.nseindia.com/content/historical/EQUITIES/2016/OCT/cm30OCT2016bhav.csv.zip
+2017-10-19,y,special,Muhurat trading (Diwali 2017),y,y,https://nsearchives.nseindia.com/content/historical/EQUITIES/2017/OCT/cm19OCT2017bhav.csv.zip
+2018-11-07,y,special,Muhurat trading (Diwali 2018),y,y,https://nsearchives.nseindia.com/content/historical/EQUITIES/2018/NOV/cm07NOV2018bhav.csv.zip
+2019-10-27,y,special,Muhurat trading (Diwali 2019),y,y,https://nsearchives.nseindia.com/content/historical/EQUITIES/2019/OCT/cm27OCT2019bhav.csv.zip
+2020-02-01,y,special,Budget Saturday session,y,y,https://nsearchives.nseindia.com/content/historical/EQUITIES/2020/FEB/cm01FEB2020bhav.csv.zip
+2020-11-14,y,special,Muhurat trading (Diwali 2020),y,y,https://nsearchives.nseindia.com/content/historical/EQUITIES/2020/NOV/cm14NOV2020bhav.csv.zip
+2021-11-04,y,special,Muhurat trading (Diwali 2021),y,y,https://nsearchives.nseindia.com/content/historical/EQUITIES/2021/NOV/cm04NOV2021bhav.csv.zip
+2022-10-24,y,special,Muhurat trading (Diwali 2022),y,y,https://nsearchives.nseindia.com/content/historical/EQUITIES/2022/OCT/cm24OCT2022bhav.csv.zip
+2023-11-12,y,special,Muhurat trading (Diwali 2023),y,y,https://nsearchives.nseindia.com/content/historical/EQUITIES/2023/NOV/cm12NOV2023bhav.csv.zip
+2024-01-20,y,special,Saturday special session (DR),y,y,https://nsearchives.nseindia.com/content/historical/EQUITIES/2024/JAN/cm20JAN2024bhav.csv.zip
+2024-03-02,y,special,Saturday special session (DR live),y,y,https://nsearchives.nseindia.com/content/historical/EQUITIES/2024/MAR/cm02MAR2024bhav.csv.zip
+2024-05-18,y,special,Saturday special session (DR live),y,y,https://nsearchives.nseindia.com/content/historical/EQUITIES/2024/MAY/cm18MAY2024bhav.csv.zip
+2024-11-01,y,special,Muhurat trading (Diwali 2024),y,y,https://nsearchives.nseindia.com/content/cm/BhavCopy_NSE_CM_0_0_0_20241101_F_0000.csv.zip
+2025-02-01,y,special,Budget Saturday session,y,y,https://nsearchives.nseindia.com/content/cm/BhavCopy_NSE_CM_0_0_0_20250201_F_0000.csv.zip
+2025-10-21,y,special,Muhurat trading (Diwali 2025),y,y,https://nsearchives.nseindia.com/content/cm/BhavCopy_NSE_CM_0_0_0_20251021_F_0000.csv.zip
+2026-02-01,y,special,Budget Sunday session,y,y,https://nsearchives.nseindia.com/content/cm/BhavCopy_NSE_CM_0_0_0_20260201_F_0000.csv.zip
+2026-11-08,y,special,Muhurat trading (Diwali 2026),y,y,https://nsearchives.nseindia.com/content/cm/BhavCopy_NSE_CM_0_0_0_20261108_F_0000.csv.zip

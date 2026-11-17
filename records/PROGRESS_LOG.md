@@ -32,3 +32,11 @@ Format and rules: [`docs/process/Documentation_Logging_and_Phase_Gates.md`](../d
 - Note: one exploratory request tried a browser-like user agent; the environment blocked it; approach dropped; no results use it.
 - Requested from user: MI-04 (essentials USO, UNG, GREK), MI-05 (domestic spot), MI-06 (optional).
 - Status: P01 VERIFIED. Next: P02 (reference data), which does not wait on the manual items.
+
+## 2026-11-17/18 — P02 — session 1
+- User input: MI-04 (USO, UNG, BNO, CPER, GREK) and MI-05 (MCX gold/silver spot 2005–2026, IBJA 30 days) done; MI-06 not possible (no WRDS). User allowed browser-like automated access (D-010): CLAUDE.md, System Specification v1.2 §11, `PoliteSession(browser=True)` and the MI-04 guide updated.
+- Checked the manual files: GREK file is correct (premium/discount; covers the 2015 Athens closure); USCF NAVs are **not** split-adjusted (D-014, corrects P01/OQ-04); MCX spot covers 2005-2026. New parsers + fixtures; `esw manual-register` logged 9 files.
+- Built reference tables: instruments_us (50; 47 included), instruments_in (100; 68 included), symbol_history (293, dated from NSE bhavcopies), nav_clock (158), corporate_actions_manual (45), duty_india (19; 8 verified), band_regimes_india (14; 4 verified), series_catalogue (22), calendar overrides and Athens sessions. Loaders, pandera schemas, `esw reference validate` (0 errors), `esw reference build-calendars`.
+- Found: NSE archive scriptable from 2007 on nsearchives host; BSE bhavcopy downloadable; 33 Indian funds changed symbol and 21 changed ISIN (lineages recorded); SETFNIF50 → SBINIFTY50 (2026-10-30); SILVRETF → SILVERAG on 2025-09-15; May 2026 duty rise to 15% reported.
+- Decisions D-010–D-014. Issues: I-001/I-003/I-005 updated, I-006 opened. OQ-04, 06, 11, 13, 15, 18, 19 updated; OQ-24, OQ-25 added. MI-09 REQUESTED (11 items).
+- Status: P02 VERIFIED. Next: P03 (incident catalogue); P04–P06 may run in parallel.

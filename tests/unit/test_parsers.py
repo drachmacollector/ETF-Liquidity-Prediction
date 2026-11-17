@@ -101,3 +101,34 @@ def test_eia_xls():
     df = P.parse_eia_xls(_read("mkt_eia/RCLC1_trimmed.xlsx"))
     assert df["date"].iloc[0] == pd.Timestamp("1983-04-04")
     assert df["value"].iloc[0] == pytest.approx(29.44)
+
+
+# --------------------------------------------------------------------------- manual drops (P02)
+def test_uscf_navhist_unadjusted_split():
+    df = P.parse_uscf_navhist(_read("us_iss_uscf/uso_navhist_trimmed.csv"))
+    assert list(df.columns) == ["date", "nav"]
+    assert df["date"].is_monotonic_increasing and (df["nav"] > 0).all()
+    d = df.set_index("date")["nav"]
+    # the file is NOT split-adjusted: 1-for-8 reverse split visible on 2020-04-29
+    assert d[pd.Timestamp("2020-04-29")] / d[pd.Timestamp("2020-04-28")] == pytest.approx(8.44, abs=0.05)
+
+
+def test_globalx_premium_discount_greece_2015():
+    df = P.parse_globalx_premium_discount(_read("us_iss_globalx/GREK_premium_discount_trimmed.csv"))
+    assert {"date", "close", "nav", "issuer_prem_pct"} <= set(df.columns)
+    assert (df["close"] > 0).all()  # zero placeholder rows dropped
+    assert df["date"].min() == pd.Timestamp("2015-06-01")
+    row = df.set_index("date").loc[pd.Timestamp("2015-07-09")]
+    assert row["nav"] == pytest.approx(10.38 - 0.80)
+    assert row["issuer_prem_pct"] == pytest.approx(8.35)
+
+
+@pytest.mark.parametrize("metal,unit", [("GOLD", "10 GRMS"), ("SILVER", "1 KGS")])
+def test_mcx_spot(metal, unit):
+    df = P.parse_mcx_spot(_read(f"in_spot_mcx/MCX_{metal}_SPOT_trimmed.xls"))
+    assert len(df) == 80
+    assert set(df["commodity"]) == {metal} and set(df["unit"]) == {unit}
+    assert set(df["location"]) == {"AHMEDABAD"}
+    assert df["polled_at_ist"].is_monotonic_increasing
+    assert str(df["polled_at_ist"].dt.tz) == "Asia/Kolkata"
+    assert df["date"].min().year == 2005 and df["date"].max() == pd.Timestamp("2026-11-17")

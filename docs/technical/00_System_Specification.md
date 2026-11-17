@@ -4,7 +4,7 @@
 | Field | Value |
 |---|---|
 | Document ID | TS-00 |
-| Version | 1.1 (P01: §4.4 notional premium; §7 AMFI upload timestamps) |
+| Version | 1.2 (P01: §4.4 notional premium; §7 AMFI upload timestamps. P02: §11 automation-first access, D-010) |
 | As-of | 17 November 2026 |
 | Status | Active. **Canonical**: where a phase document and this document disagree on a definition, this document wins until a logged decision changes it. |
 | Read with | [Research Document](../research/ETF_Stress_Research_Document.md) (why), [phase documents](phases/) (what to build, in order), [process](../process/Documentation_Logging_and_Phase_Gates.md) (how progress is recorded and verified) |
@@ -523,7 +523,7 @@ All tables carry `source` (string), `ingested_at` (UTC timestamp) and, where rel
 
 **Secrets:** API keys live only in `.env` (gitignored). `.env.example` lists the names: `TIINGO_API_KEY`, `FRED_API_KEY` (optional), `ESW_USER_AGENT` (a generic client string, e.g., `esw-research-bot/0.1`; do not put personal email addresses in it).
 
-**Polite data access:** identify with `ESW_USER_AGENT`; at most 1 request per second per host (configurable); exponential back-off with jitter on 429/5xx (max 5 retries); cache raw files and never re-download an existing complete file unless `--refresh`.
+**Polite data access:** identify with `ESW_USER_AGENT` by default; at most 1 request per second per host (configurable); exponential back-off with jitter on 429/5xx (max 5 retries); cache raw files and never re-download an existing complete file unless `--refresh`. **Automation first (D-010):** where a site serves its public files only to browsers, the client may use a browser-like user agent and headers, keep session cookies, and use page-issued tokens (`PoliteSession(browser=True)`); rate limits still apply. SEC EDGAR always uses the declared project user agent. Manual downloads are the last resort.
 
 ---
 
@@ -589,3 +589,4 @@ A phase is `VERIFIED` only when **all** of these hold:
 |---|---|---|---|
 | 1.0 | 2026-11-17 | First edition | D-000 |
 | 1.1 | 2026-11-17 | §4.4: `LP_NAV` before 2026-04-01 is a notional delivery premium, not 0. §7: AMFI NAV `known_at` uses the upload timestamp | D-005, D-008 |
+| 1.2 | 2026-11-17 | §11: automation-first access; browser-like clients allowed for public files | D-010 |

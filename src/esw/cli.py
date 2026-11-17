@@ -150,5 +150,52 @@ def probe(
     typer.echo(f"{len(rows)} rows written to {matrix_path(settings)}: {summary}")
 
 
+@app.command("manual-register")
+def manual_register() -> None:
+    """Log every new file in data/manual_drop/ in the ingest log (status = manual)."""
+    from esw.ingest.manual import register_manual_drops
+
+    settings = get_settings()
+    with RunContext(phase="P02", purpose="register manual drops", slug="manual", settings=settings) as run:
+        recs = register_manual_drops(settings, run_id=run.run_id)
+        run.log_metrics({"files_logged": len(recs)})
+    for r in recs:
+        typer.echo(
+            f"{r['path']}: rows={r['rows_parsed']} {r['date_min']}..{r['date_max']} {r['error'] or ''}"
+        )
+    typer.echo(f"{len(recs)} new manual file(s) logged.")
+
+
+reference_app = typer.Typer(no_args_is_help=True, help="P02 reference tables and calendars.")
+app.add_typer(reference_app, name="reference")
+
+
+@reference_app.command("validate")
+def reference_validate() -> None:
+    """Validate every reference table and the cross-table checks; write reports/data/reference_validation.md."""
+    from esw.reference.validate import run_validation
+
+    settings = get_settings()
+    report = run_validation(settings)
+    typer.echo(report.summary())
+    if report.errors:
+        raise typer.Exit(code=1)
+
+
+@reference_app.command("build-calendars")
+def reference_build_calendars() -> None:
+    """Build data/curated/calendar.parquet (US canonical, India preliminary, foreign markets)."""
+    from esw.reference.calendars import build_calendars
+
+    settings = get_settings()
+    with RunContext(phase="P02", purpose="build calendars", slug="calendars", settings=settings) as run:
+        cal, path = build_calendars(settings)
+        counts = cal.groupby("market")["is_trading"].sum().to_dict()
+        run.log_metrics({f"trading_days_{k}": int(v) for k, v in counts.items()})
+    typer.echo(f"{len(cal)} rows written to {path}")
+    for k, v in counts.items():
+        typer.echo(f"  {k}: {int(v)} trading days")
+
+
 if __name__ == "__main__":
     app()

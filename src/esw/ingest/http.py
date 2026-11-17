@@ -1,9 +1,10 @@
 """Polite HTTP access (System Specification §11).
 
-Rules: identify honestly with the project user agent, at most one request per
-`min_seconds_between_requests` per host, exponential back-off with jitter on 429/5xx and
-timeouts. Never imitate a browser or work around bot protection: a blocked source is
-recorded as blocked and handled by a manual-download guide instead.
+Rules: at most one request per `min_seconds_between_requests` per host, exponential back-off
+with jitter on 429/5xx and timeouts. By default the client identifies with the project user agent.
+Automation first (D-010): `PoliteSession(browser=True)` sends browser-like headers and keeps
+cookies, for public files that sites serve only to browsers. SEC EDGAR always uses the default
+(declared) user agent. Manual downloads are the last resort.
 """
 
 from __future__ import annotations
@@ -21,22 +22,43 @@ log = logging.getLogger(__name__)
 
 RETRY_STATUSES = {429, 500, 502, 503, 504}
 
+BROWSER_HEADERS = {
+    "User-Agent": (
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
+        "Chrome/131.0.0.0 Safari/537.36"
+    ),
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept-Language": "en-US,en;q=0.9",
+}
+
 
 class PoliteSession:
-    def __init__(self, settings: Settings | None = None, timeout: float | None = None) -> None:
+    def __init__(
+        self,
+        settings: Settings | None = None,
+        timeout: float | None = None,
+        *,
+        browser: bool = False,
+        min_seconds: float | None = None,
+    ) -> None:
         self.settings = settings or get_settings()
         self.http = self.settings.http
         self.timeout = timeout or self.http.timeout_seconds
+        self.min_seconds = self.http.min_seconds_between_requests if min_seconds is None else min_seconds
+        self.browser = browser
         self.session = requests.Session()
-        self.session.headers["User-Agent"] = self.settings.user_agent
+        if browser:
+            self.session.headers.update(BROWSER_HEADERS)
+        else:
+            self.session.headers["User-Agent"] = self.settings.user_agent
         self._last_request: dict[str, float] = {}
 
     def _wait_for_host(self, host: str) -> None:
         last = self._last_request.get(host)
         if last is not None:
             gap = time.monotonic() - last
-            if gap < self.http.min_seconds_between_requests:
-                time.sleep(self.http.min_seconds_between_requests - gap)
+            if gap < self.min_seconds:
+                time.sleep(self.min_seconds - gap)
         self._last_request[host] = time.monotonic()
 
     def get(

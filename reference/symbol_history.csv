@@ -1,0 +1,294 @@
+instrument_id,exchange,symbol,isin,valid_from,valid_to,source_url
+US:GLD,NYSEARCA,GLD,US78463V1070,2004-11-18,,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+US:GLDM,NYSEARCA,GLDM,US98149E3036,2018-06-26,,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+US:IAU,NYSEARCA,IAU,US4642852044,2005-01-28,,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+US:SLV,NYSEARCA,SLV,US46428Q1094,2006-04-28,,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+US:SIVR,NYSEARCA,SIVR,US0032641088,2009-07-24,,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+US:PPLT,NYSEARCA,PPLT,US0032601066,2010-01-08,,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+US:PALL,NYSEARCA,PALL,US0032621023,2010-01-14,,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+US:USO,NYSEARCA,USO,US91232N2071,2006-04-10,,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+US:UNG,NYSEARCA,UNG,US9123184098,2007-04-18,,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+US:BNO,NYSEARCA,BNO,US91167Q1004,2010-06-02,,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+US:UGA,NYSEARCA,UGA,US91201T1025,2008-02-28,,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+US:USL,NYSEARCA,USL,US91288V1035,2007-12-06,,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+US:UNL,NYSEARCA,UNL,US91288X1090,2010-01-04,,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+US:CPER,NYSEARCA,CPER,US9117181043,2011-11-15,,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+US:USCI,NYSEARCA,USCI,US9117171069,2010-08-10,,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+US:DBC,NYSEARCA,DBC,US46138B1035,2006-02-03,,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+US:DBA,NYSEARCA,DBA,US46140H1068,2007-01-05,,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+US:DBO,NYSEARCA,DBO,US46140H4039,2007-01-05,,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+US:GSG,NYSEARCA,GSG,US46428R1077,2006-07-21,,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+US:CORN,NYSEARCA,CORN,US88166A1025,2010-06-09,,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+US:WEAT,NYSEARCA,WEAT,US88166A8707,2011-09-19,,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+US:SOYB,NYSEARCA,SOYB,US88166A6073,2011-09-19,,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+US:LQD,NYSEARCA,LQD,US4642872422,2002-07-26,,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+US:HYG,NYSEARCA,HYG,US4642885135,2007-04-11,,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+US:MUB,NYSEARCA,MUB,US4642884146,2007-09-10,,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+US:EMB,NASDAQ,EMB,US4642882819,2007-12-19,,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+US:AGG,NYSEARCA,AGG,US4642872265,2003-09-26,,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+US:TLT,NASDAQ,TLT,US4642874329,2002-07-26,,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+US:JNK,NYSEARCA,JNK,US78468R6229,2007-12-04,,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+US:BKLN,NYSEARCA,BKLN,US46138G5080,2011-03-03,,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+US:BND,NASDAQ,BND,US9219378356,2007-04-10,,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+US:EWJ,NYSEARCA,EWJ,US46434G8226,1996-04-01,,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+US:EWH,NYSEARCA,EWH,US4642868719,1996-04-01,,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+US:EWZ,NYSEARCA,EWZ,US4642864007,2000-07-14,,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+US:EWW,NYSEARCA,EWW,US4642868222,1996-04-01,,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+US:FXI,NYSEARCA,FXI,US4642871846,2004-10-08,,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+US:EEM,NYSEARCA,EEM,US4642872349,2003-04-11,,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+US:INDA,CBOE,INDA,US46429B5984,2012-02-03,,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+US:TUR,NASDAQ,TUR,US4642867158,2008-03-28,,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+US:ERUS,NYSEARCA,ERUS,US46434G7988,2010-11-10,2022-08-30,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+US:EGPT,NYSEARCA,EGPT,US92189F7758,2010-02-18,2024-03-21,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+US:RSX,CBOE,RSX,US92189F4037,2007-04-30,2023-01-13,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+US:GREK,NYSEARCA,GREK,US37954Y3190,2011-12-08,,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+US:ASHR,NYSEARCA,ASHR,US2330518794,2013-11-06,,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+US:SPY,NYSEARCA,SPY,US78462F1030,1993-01-29,,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+US:DIA,NYSEARCA,DIA,US78467X1090,1998-01-20,,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+US:IVV,NYSEARCA,IVV,US4642872000,2000-05-19,,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+US:IWM,NYSEARCA,IWM,US4642876555,2000-05-26,,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+US:QQQ,NASDAQ,QQQ,US46090E1038,1999-03-10,,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+US:VOO,NYSEARCA,VOO,US9229083632,2010-09-09,,"Tiingo metadata (exchangeCode, startDate/endDate); listing-exchange moves not tracked"
+IN:INF346A01034,NSE,SPICE,INF346A01034,2014-07-30,2014-11-27,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF346A01034,NSE,ISENSEX,INF346A01034,2014-11-28,2016-07-24,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF346A01034,NSE,SENSEXIWIN,INF346A01034,2016-07-25,2018-04-09,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF346A01034,NSE,ICICISENSX,INF346A01034,2018-04-10,2023-12-19,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF346A01034,NSE,SENSEXIETF,INF346A01034,2023-12-20,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF346A01034,BSE,555555,INF346A01034,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF769K01EG9,NSE,MAN50ETF,INF769K01EG9,2018-11-28,2023-08-31,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF769K01EG9,NSE,NIFTYETF,INF769K01EG9,2023-09-01,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF769K01EG9,BSE,542131,INF769K01EG9,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF204KB14I2,NSE,NIFTYBEES,INF732E01011,2007-01-02,2019-12-19,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF204KB14I2,NSE,NIFTYBEES,INF204KB14I2,2019-12-20,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF204KB14I2,BSE,590103,INF204KB14I2,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF204KB15I9,NSE,BANKBEES,INF732E01078,2007-01-02,2019-12-19,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF204KB15I9,NSE,BANKBEES,INF204KB15I9,2019-12-20,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF204KB15I9,BSE,590106,INF204KB15I9,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF732E01045,NSE,JUNIORBEES,INF732E01045,2007-01-02,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF732E01045,BSE,590104,INF732E01045,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF200KA1FS1,NSE,SETFNIFTY,INF200KA1FS1,2015-07-27,2015-11-23,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF200KA1FS1,NSE,SETFNIF50,INF200KA1FS1,2015-11-24,2026-10-29,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF200KA1FS1,NSE,SBINIFTY50,INF200KA1FS1,2026-10-30,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF200KA1FS1,BSE,590138,INF200KA1FS1,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF209KC1134,NSE,ABGSEC,INF209KC1134,2024-07-10,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF1J2R01056,NSE,AONELIQUID,INF1J2R01056,2025-03-28,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF209KB18T9,NSE,ABSLLIQUID,INF209KB18T9,2023-03-23,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF209KB18T9,BSE,543813,INF209KB18T9,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF209KC1142,NSE,GSEC10ABSL,INF209KC1142,2024-08-19,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF209KC1142,BSE,544228,INF209KC1142,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF754K01OB1,NSE,BBETF0432,INF754K01OB1,2021-12-17,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF754K01OB1,BSE,543418,INF754K01OB1,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF754K01QX0,NSE,EBBETF0433,INF754K01QX0,2022-12-16,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF754K01QX0,BSE,543699,INF754K01QX0,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF754K01LE1,NSE,EBBETF0431,INF754K01LE1,2020-07-29,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF754K01LE1,BSE,543216,INF754K01LE1,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF0QA701854,NSE,LIQUIDBETF,INF0QA701854,2024-06-03,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF0QA701854,BSE,544182,INF0QA701854,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF754K01KO2,NSE,EBBETF0430,INF754K01KO2,2020-01-02,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF754K01KO2,BSE,542909,INF754K01KO2,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF740KA1UM0,NSE,LIQUIDADD,INF740KA1UM0,2024-04-03,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF740KA1UM0,BSE,544159,INF740KA1UM0,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF740KA1ZI7,NSE,GSEC10ADD,INF740KA1ZI7,2026-08-20,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF740KA1EU7,NSE,LIQUIDETF,INF740KA1EU7,2018-03-20,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF740KA1EU7,BSE,541097,INF740KA1EU7,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF754K01VW2,NSE,ELIQUID,INF754K01VW2,2025-11-04,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF666M01IP5,NSE,GROWWLIQID,INF666M01IP5,2024-09-26,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF666M01IP5,BSE,590159,INF666M01IP5,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF179KC1JG3,NSE,HDFCLIQUID,INF179KC1HE2,2023-08-31,2025-02-27,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF179KC1JG3,NSE,HDFCLIQUID,INF179KC1JG3,2025-02-28,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF179KC1JG3,BSE,543973,INF179KC1JG3,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF109K1A021,NSE,CASHIETF,INF109K1A021,2025-03-19,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF109K1A021,BSE,544380,INF109K1A021,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF109KC1KT9,NSE,ICICILIQ,INF109KC1KT9,2018-11-02,2023-12-19,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF109KC1KT9,NSE,LIQUIDIETF,INF109KC1KT9,2023-12-20,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF109KC1KT9,BSE,541946,INF109KC1KT9,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF109KC18O0,NSE,ICICI10GS,INF109KC18O0,2022-12-19,2023-12-19,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF109KC18O0,NSE,GSEC10IETF,INF109KC18O0,2023-12-20,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF109KC18O0,BSE,543700,INF109KC18O0,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF109KC14A8,NSE,ICICI5GSEC,INF109KC14A8,2022-03-10,2023-12-19,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF109KC14A8,NSE,GSEC5IETF,INF109KC14A8,2023-12-20,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF174KA1LV5,NSE,KOTAKLIQ,INF174KA1LV5,2023-02-01,2024-03-19,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF174KA1LV5,NSE,LIQUID1,INF174KA1LV5,2024-03-20,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF174KA1LV5,BSE,590139,INF174KA1LV5,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF767K01MV5,NSE,LICNMFET,INF767K01MV5,2015-01-01,2015-12-29,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF767K01MV5,NSE,LICNETFGSC,INF767K01MV5,2015-12-30,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF769K01MY5,NSE,LIQUIDPLUS,INF769K01MY5,2024-11-13,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF769K01MY5,BSE,544284,INF769K01MY5,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF769K01KS1,NSE,LIQUID,INF769K01KS1,2023-07-31,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF769K01KS1,BSE,543946,INF769K01KS1,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF769K01KF8,NSE,MAGS813ETF,INF769K01KF8,2023-04-10,2023-09-03,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF769K01KF8,NSE,GSEC10YEAR,INF769K01KF8,2023-09-04,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF247L01AK4,NSE,G5,INF247L01AK4,2020-12-16,2021-06-15,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF247L01AK4,NSE,MOGSEC,INF247L01AK4,2021-06-16,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF247L01AK4,BSE,543250,INF247L01AK4,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF204KC1HS1,NSE,FARBEES,INF204KC1HS1,2026-10-16,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF732E01037,NSE,LIQUIDBEES,INF732E01037,2007-01-02,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF732E01037,BSE,590096,INF732E01037,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF204KC1030,NSE,NETFGILT5Y,INF204KC1030,2021-04-12,2022-05-09,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF204KC1030,NSE,GILT5YBEES,INF204KC1030,2022-05-10,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF204KB1882,NSE,RRSLGETF,INF204KB1882,2016-07-22,2019-10-29,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF204KB1882,NSE,NETFLTGILT,INF204KB1882,2019-10-30,2022-05-09,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF204KB1882,NSE,LTGILTBEES,INF204KB1882,2022-05-10,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF204KB1882,BSE,590143,INF204KB1882,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF204KC1FU1,NSE,LIQGRWBEES,INF204KC1FU1,2025-07-25,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF200KB1969,NSE,SBILIQETF,INF200KB1969,2025-08-13,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF200KB1969,BSE,544478,INF200KB1969,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF200KA13Z8,NSE,LIQUIDSBI,INF200KA13Z8,2023-11-02,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF200KA13Z8,BSE,544010,INF200KA13Z8,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF200KA1JT1,NSE,SETF10GILT,INF200KA1JT1,2016-06-23,2026-10-29,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF200KA1JT1,NSE,SBI10YGILT,INF200KA1JT1,2026-10-30,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF680P01422,NSE,LIQUIDSHRI,INF680P01422,2024-07-09,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF680P01422,BSE,544208,INF680P01422,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF789F1AZF3,NSE,NIF10GETF,INF789F1AZF3,2024-02-05,2025-12-23,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF789F1AZF3,NSE,GILT10BETA,INF789F1AZF3,2025-12-24,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF789F1AZF3,BSE,544104,INF789F1AZF3,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF789F1AG68,NSE,LIQUIDBETA,INF789F1AG68,2026-07-21,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF789F1AZE6,NSE,NIF5GETF,INF789F1AZE6,2024-02-05,2025-12-23,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF789F1AZE6,NSE,GILT5BETA,INF789F1AZE6,2025-12-24,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF0R8F01034,NSE,LIQUIDCASE,INF0R8F01034,2024-01-24,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF0R8F01034,BSE,544089,INF0R8F01034,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF0R8F01133,NSE,LTGILTCASE,INF0R8F01133,2025-08-20,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF0R8F01133,BSE,544486,INF0R8F01133,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF579M01BB5,NSE,GOLD360,INF579M01BB5,2025-03-17,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF579M01BB5,BSE,544375,INF579M01BB5,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF1J2R01114,NSE,AONEGOLD,INF1J2R01114,2025-09-10,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF209KB18D3,NSE,BSLGOLDETF,INF209K01HT2,2011-05-23,2021-11-25,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF209KB18D3,NSE,BSLGOLDETF,INF209KB18D3,2021-11-26,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF209KB18D3,BSE,533408,INF209KB18D3,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF846K01W80,NSE,AXISGOLD,INF846K01347,2010-11-16,2020-07-26,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF846K01W80,NSE,AXISGOLD,INF846K01W80,2020-07-27,2026-07-02,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF846K01W80,NSE,GOLDAXIS,INF846K01W80,2026-07-03,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF846K01W80,BSE,533570,INF846K01W80,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF194KB1KJ7,NSE,GOLDBND,INF194KB1KJ7,2025-12-12,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF194KB1KJ7,BSE,544638,INF194KB1KJ7,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF251K01SU9,NSE,BBNPPGOLD,INF251K01SU9,2023-12-19,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF251K01SU9,BSE,544043,INF251K01SU9,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF2KCX01012,NSE,CHOICEGOLD,INF2KCX01012,2025-11-10,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF2KCX01012,BSE,544601,INF2KCX01012,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF740KA1ZP2,NSE,DSPGOLDETF,INF740KA1SW3,2023-05-05,2024-02-14,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF740KA1ZP2,NSE,GOLDETFADD,INF740KA1SW3,2024-02-15,2025-12-14,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF740KA1ZP2,NSE,GOLDADD,INF740KA1SW3,2025-12-15,2026-08-27,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF740KA1ZP2,NSE,GOLDADD,INF740KA1ZP2,2026-08-28,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF740KA1ZP2,BSE,543903,INF740KA1ZP2,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF754K01SE6,NSE,EGOLD,INF754K01SE6,2023-11-10,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF666M01OE7,NSE,GROWWGOLD,INF666M01IW1,2024-10-24,2026-02-05,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF666M01OE7,NSE,GROWWGOLD,INF666M01OE7,2026-02-06,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF666M01OE7,BSE,590156,INF666M01OE7,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF179KC1981,NSE,HDFCMFGETF,INF179K01CN1,2010-08-19,2021-02-18,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF179KC1981,NSE,HDFCMFGETF,INF179KC1981,2021-02-19,2023-06-15,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF179KC1981,NSE,HDFCGOLD,INF179KC1981,2023-06-16,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF179KC1981,BSE,533230,INF179KC1981,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF336L01RX2,NSE,HSBCGOLD,INF336L01RX2,2026-03-27,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF336L01RX2,BSE,544736,INF336L01RX2,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF109KC1NT3,NSE,IPGETF,INF109K01FV4,2010-09-02,2014-05-04,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF109KC1NT3,NSE,IGOLD,INF109K01FV4,2014-05-05,2016-06-09,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF109KC1NT3,NSE,IGOLD,INF109KB1WF4,2016-06-10,2016-07-24,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF109KC1NT3,NSE,GOLDIWIN,INF109KB1WF4,2016-07-25,2018-04-09,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF109KC1NT3,NSE,ICICIGOLD,INF109KB1WF4,2018-04-10,2018-11-15,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF109KC1NT3,NSE,ICICIGOLD,INF109KC1NT3,2018-11-16,2023-12-19,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF109KC1NT3,NSE,GOLDIETF,INF109KC1NT3,2023-12-20,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF109KC1NT3,BSE,533244,INF109KC1NT3,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF205KA1BP1,NSE,RELIGAREGO,INF205K01361,2010-03-22,2016-06-22,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF205KA1BP1,NSE,IVZINGOLD,INF205K01361,2016-06-23,2026-04-29,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF205KA1BP1,NSE,IVZINGOLD,INF205KA1BP1,2026-04-30,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF205KA1BP1,BSE,533172,INF205KA1BP1,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF174KA1HJ8,NSE,KOTAKGOLD,INF373I01015,2007-08-08,2015-04-14,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF174KA1HJ8,NSE,KOTAKGOLD,INF373I01049,2015-04-15,2021-07-22,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF174KA1HJ8,NSE,KOTAKGOLD,INF174KA1HJ8,2021-07-23,2024-04-15,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF174KA1HJ8,NSE,GOLD1,INF174KA1HJ8,2024-04-16,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF174KA1HJ8,BSE,590097,INF174KA1HJ8,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF767K01SM1,NSE,IDBIGOLD,INF397L01554,2011-11-17,2023-07-30,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF767K01SM1,NSE,LICMFGOLD,INF397L01554,2023-07-31,2026-03-05,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF767K01SM1,NSE,LICMFGOLD,INF767K01SM1,2026-03-06,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF767K01SM1,BSE,533719,INF767K01SM1,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF769K01JP9,NSE,MAGOLDETF,INF769K01JP9,2023-02-24,2023-08-31,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF769K01JP9,NSE,GOLDETF,INF769K01JP9,2023-09-01,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF769K01JP9,BSE,543781,INF769K01JP9,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF247L01FY4,NSE,MOGOLD,INF247L01FY4,2025-07-31,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF247L01FY4,BSE,590146,INF247L01FY4,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF204KB17I5,NSE,GOLDBEES,INF732E01102,2007-03-19,2019-12-19,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF204KB17I5,NSE,GOLDBEES,INF204KB17I5,2019-12-20,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF204KB17I5,BSE,590095,INF204KB17I5,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF082J01408,NSE,QGOLDHALF,INF082J01010,2008-02-28,2021-12-16,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF082J01408,NSE,QGOLDHALF,INF082J01408,2021-12-17,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF082J01408,BSE,590099,INF082J01408,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF200KA16D8,NSE,SBIGETS,INF200K01099,2009-05-28,2015-11-23,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF200KA16D8,NSE,SETFGOLD,INF200K01099,2015-11-24,2022-01-06,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF200KA16D8,NSE,SETFGOLD,INF200KA16D8,2022-01-07,2026-10-29,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF200KA16D8,NSE,SBIGOLD,INF200KA16D8,2026-10-30,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF200KA16D8,BSE,590098,INF200KA16D8,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF277KA1976,NSE,TATAGOLD,INF277KA1976,2024-01-17,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF277KA1976,BSE,590140,INF277KA1976,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF2F0001370,NSE,TWCGOLDETF,INF2F0001370,2026-01-02,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF2F0001370,BSE,544672,INF2F0001370,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF789F1AUX7,NSE,GOLDSHARE,INF789F01059,2007-04-17,2021-03-25,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF789F1AUX7,NSE,GOLDSHARE,INF789F1AUX7,2021-03-26,2025-12-23,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF789F1AUX7,NSE,GOLDBETA,INF789F1AUX7,2025-12-24,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF789F1AUX7,BSE,590101,INF789F1AUX7,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF582M01KS4,NSE,UNIONGOLD,INF582M01KS4,2025-02-21,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF582M01KS4,BSE,544363,INF582M01KS4,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF0R8F01042,NSE,GOLDCASE,INF0R8F01042,2024-03-01,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF0R8F01042,BSE,544132,INF0R8F01042,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF769K01HS7,NSE,MAHKTECH,INF769K01HS7,2021-12-10,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF769K01HS7,BSE,543414,INF769K01HS7,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF769K01HF4,NSE,MAFANG,INF769K01HF4,2021-05-14,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF769K01HF4,BSE,543291,INF769K01HF4,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF769K01HP3,NSE,MASPTOP50,INF769K01HP3,2021-09-24,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF769K01HP3,BSE,543365,INF769K01HP3,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF247L01AP3,NSE,N100,INF247L01031,2011-03-31,2021-06-15,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF247L01AP3,NSE,MON100,INF247L01031,2021-06-16,2021-06-17,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF247L01AP3,NSE,MON100,INF247L01AP3,2021-06-18,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF247L01AP3,BSE,533385,INF247L01AP3,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF247L01AU3,NSE,MONQ50,INF247L01AU3,2021-12-29,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF247L01AU3,BSE,543437,INF247L01AU3,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF204KB19I1,NSE,HNGSNGBEES,INF732E01227,2010-03-18,2019-12-19,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF204KB19I1,NSE,HNGSNGBEES,INF204KB19I1,2019-12-20,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF204KB19I1,BSE,590113,INF204KB19I1,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF579M01BC3,NSE,SILVER360,INF579M01BC3,2025-04-04,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF579M01BC3,BSE,544389,INF579M01BC3,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF1J2R01171,NSE,AONESILVER,INF1J2R01171,2026-03-02,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF209KB19F6,NSE,SILVER,INF209KB19F6,2022-02-03,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF209KB19F6,BSE,543471,INF209KB19F6,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF846K011K1,NSE,AXISILVER,INF846K011K1,2022-09-27,2026-07-02,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF846K011K1,NSE,SILVERAXIS,INF846K011K1,2026-07-03,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF846K011K1,BSE,544984,INF846K011K1,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF194KB1KI9,NSE,SILVERBND,INF194KB1KI9,2025-12-12,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF194KB1KI9,BSE,544639,INF194KB1KI9,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF740KA1ZQ0,NSE,DSPSILVETF,INF740KA1RE3,2022-08-25,2024-02-14,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF740KA1ZQ0,NSE,SILVERADD,INF740KA1RE3,2024-02-15,2026-08-27,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF740KA1ZQ0,NSE,SILVERADD,INF740KA1ZQ0,2026-08-28,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF740KA1ZQ0,BSE,543572,INF740KA1ZQ0,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF754K01SF3,NSE,ESILVER,INF754K01SF3,2023-11-24,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF666M01OF4,NSE,GROWWSLVR,INF666M01LA1,2025-05-23,2026-02-05,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF666M01OF4,NSE,GROWWSLVR,INF666M01OF4,2026-02-06,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF666M01OF4,BSE,590155,INF666M01OF4,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF179KC1DI2,NSE,HDFCSILVER,INF179KC1DI2,2022-09-07,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF179KC1DI2,BSE,543592,INF179KC1DI2,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF109KC1Y56,NSE,ICICISILVE,INF109KC1Y56,2022-01-31,2023-12-19,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF109KC1Y56,NSE,SILVERIETF,INF109KC1Y56,2023-12-20,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF109KC1Y56,BSE,543452,INF109KC1Y56,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF174KA1ZD3,NSE,KOTAKSILVE,INF174KA1KU9,2022-12-14,2024-04-15,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF174KA1ZD3,NSE,SILVER1,INF174KA1KU9,2024-04-16,2026-02-26,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF174KA1ZD3,NSE,SILVER1,INF174KA1ZD3,2026-02-27,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF769K01KG6,NSE,MASILVER,INF769K01KG6,2023-06-15,2023-08-31,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF769K01KG6,NSE,SILVRETF,INF769K01KG6,2023-09-01,2025-09-14,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF769K01KG6,NSE,SILVERAG,INF769K01KG6,2025-09-15,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF769K01KG6,BSE,543922,INF769K01KG6,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF247L01FZ1,NSE,MOSILVER,INF247L01FZ1,2025-08-14,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF247L01FZ1,BSE,590147,INF247L01FZ1,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF204KC1402,NSE,NETFSILVER,INF204KC1402,2022-02-07,2022-05-09,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF204KC1402,NSE,SILVERBEES,INF204KC1402,2022-05-10,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF204KC1402,BSE,590145,INF204KC1402,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF200KB1217,NSE,SBISILVER,INF200KB1217,2024-07-08,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF200KB1217,BSE,544206,INF200KB1217,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF277KA1984,NSE,TATSILV,INF277KA1984,2024-01-17,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF277KA1984,BSE,590161,INF277KA1984,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF789F1AYK6,NSE,SILVERETF,INF789F1AYK6,2023-04-20,2025-12-23,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF789F1AYK6,NSE,SILVERBETA,INF789F1AYK6,2025-12-24,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF789F1AYK6,BSE,543900,INF789F1AYK6,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF0R8F01091,NSE,SILVERCASE,INF0R8F01091,2025-03-26,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF0R8F01091,BSE,544384,INF0R8F01091,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF966L01EI5,NSE,SILVER001,INF966L01EI5,2026-08-25,,"NSE CM bhavcopy (nsearchives.nseindia.com): monthly samples, change dates by bisection"
+IN:INF966L01EI5,BSE,545022,INF966L01EI5,,,BSE CM bhavcopy 2026-11-16 (scrip code; history not built)
+IN:INF247L01072,NSE,MGOLD,INF247L01072,,2015-03-02,NSE CM bhavcopy monthly samples (approximate: last month seen)
+IN:INF733I01010,NSE,RELGOLD,INF733I01010,,2016-11-01,NSE CM bhavcopy monthly samples (approximate: last month seen)

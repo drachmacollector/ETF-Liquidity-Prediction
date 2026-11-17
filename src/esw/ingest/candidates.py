@@ -80,7 +80,23 @@ _IN_DEBT = re.compile(
 _IN_FOF = re.compile(r"Fund of Fund|FOF|Index Fund", flags=re.I)
 
 # Controls chosen by NSE symbol (confirmed in P02).
-IN_CONTROL_SYMBOLS = ["NIFTYBEES", "SETFNIF50", "BANKBEES", "JUNIORBEES"]
+IN_CONTROL_SYMBOLS = [
+    "NIFTYBEES",
+    "SETFNIF50",
+    "BANKBEES",
+    "JUNIORBEES",
+]  # P01 list (SETFNIF50 is now SBINIFTY50)
+
+# P02 control set, keyed by ISIN (System Specification §5.3): Nifty 50, Nifty Bank, Nifty Next 50,
+# a Sensex ETF and the Mirae Nifty 50 ETF.
+IN_CONTROL_ISINS = {
+    "INF204KB14I2": "NIFTYBEES",
+    "INF200KA1FS1": "SBINIFTY50",
+    "INF204KB15I9": "BANKBEES",
+    "INF732E01045": "JUNIORBEES",
+    "INF346A01034": "SENSEXIETF",
+    "INF769K01EG9": "NIFTYETF",
+}
 
 
 def classify_india(scheme_name: str, category: str | None) -> str | None:
@@ -93,7 +109,11 @@ def classify_india(scheme_name: str, category: str | None) -> str | None:
         return "IN_SILVER"
     if re.search(r"\bGold\b", name, flags=re.I) and not re.search(r"Mining|Miners", name, flags=re.I):
         return "IN_GOLD"
-    if _IN_OVERSEAS.search(name) and not re.search(r"\bIndia\b", name, flags=re.I):
+    # "Nippon India" is an AMC brand, not a market: drop it before testing for India-only indices.
+    name_wo_amc = re.sub(r"^Nippon India\s+", "", name, flags=re.I)
+    if "Hybrid" in cat:
+        return None
+    if _IN_OVERSEAS.search(name_wo_amc) and not re.search(r"\bIndia\b", name_wo_amc, flags=re.I):
         return "IN_INTL"
     if "Debt ETF" in cat or _IN_DEBT.search(name):
         return "IN_DEBT"

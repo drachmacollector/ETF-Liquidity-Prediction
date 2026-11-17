@@ -9,6 +9,7 @@ Format: [`docs/process/Documentation_Logging_and_Phase_Gates.md`](../docs/proces
 - Symptom: USCF's "Download Historical NAV Performance" CSV contains only Date and NAV.
 - Impact: Creation-activity features (F2) are missing for USO and UNG, the anchor capacity incidents (2009, 2020). Capacity headroom (F3, from SEC filings) is unaffected.
 - Options: shares outstanding from 10-Q/10-K (quarterly, too coarse); CRSP (MI-06); accept missing-aware features for these funds and state it. Decide in P04/P10.
+- Update 2026-11-17 (P02): CRSP not available (D-011). Remaining options: P04 tries the USCF page data feed automatically (D-010) for daily shares; otherwise missing-aware features. GREK's Global X file also lacks shares outstanding.
 
 ### I-002 — Tiingo free-tier rate limit (~50 requests/hour) [OPEN]
 - Found: 2026-11-17 · Phase: P01 · Severity: low
@@ -20,6 +21,7 @@ Format: [`docs/process/Documentation_Logging_and_Phase_Gates.md`](../docs/proces
 - Symptom: GOLDBEES, NIFTYBEES, BANKBEES and JUNIORBEES start 2016-11-07 in mfapi and are absent from AMFI's 2010 snapshot (predecessor AMCs: Benchmark → Goldman Sachs → Reliance → Nippon).
 - Impact: GOLDBEES, the largest gold ETF, lacks NAV before Nov 2016 unless predecessor codes are found. Nine other gold ETFs cover 2007–2011 onwards.
 - Plan: P02 searches AMFI snapshots for predecessor scheme codes by name.
+- Update 2026-11-17 (P02): NSE bhavcopies show the predecessor ISINs (GOLDBEES INF732E01102 until 2019-12-19; NIFTYBEES INF732E01011; BANKBEES INF732E01078; HNGSNGBEES INF732E01227); they are in `symbol_history.isin`. The same pattern affects LICMFGOLD (IDBI Gold ETF ISIN INF397L01554 until 2026-03-05) and other merged funds. The AMFI 2010 snapshot does not carry these ISINs, so the old AMFI codes are still unknown. P05: look up the predecessor ISINs in AMFI `all_for_date` snapshots (e.g., 2012, 2015, 2018) and stitch NAV histories; until then pre-2016 BeES NAV is missing. Prices are unaffected (bhavcopy by ISIN/symbol, from 2007).
 
 ### I-004 — Unit splits in Indian gold ETFs [OPEN]
 - Found: 2026-11-17 · Phase: P01 · Severity: medium
@@ -29,6 +31,12 @@ Format: [`docs/process/Documentation_Logging_and_Phase_Gates.md`](../docs/proces
 ### I-005 — RSX, EGPT and ERUS NAV history unavailable from free sources [OPEN]
 - Found: 2026-11-17 · Phase: P01 · Severity: medium
 - Impact: The Russia 2022 and Egypt 2011 incidents become catalogue-only (no model data) unless CRSP is available (MI-06). Prices exist on Tiingo.
+- Update 2026-11-17 (P02): MI-06 declined (no WRDS access, D-011). The three funds are `include = false` in `reference/instruments_us.csv`; incidents stay catalogue-only in P03.
+
+### I-006 — Bhavcopy lists only traded securities: listing dates of thin ETFs are approximate [OPEN]
+- Found: 2026-11-17 · Phase: P02 · Severity: low
+- Symptom: monthly samples miss ETFs with no trades on the sample day (e.g., ICICI's Sensex ETF appears first in Aug 2014 under SPICE although it listed in 2003). `listing_date` is the first appearance found by bisection, so for thin ETFs it can be late.
+- Plan: P05 scans every bhavcopy and replaces `listing_date` with the first appearance in the full history; the inception date (first NAV) is the fallback for NAV-clock coverage.
 
 ## Resolved
 

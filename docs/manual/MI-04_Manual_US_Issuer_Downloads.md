@@ -9,7 +9,7 @@
 
 ## Why this needs you
 
-Some fund websites serve their historical-data files only to a browser (cookies, JavaScript, bot protection). Downloading them by hand for personal research is normally permitted; scripting around protections is not something the project does.
+Some fund websites serve their historical-data files only to a browser (cookies, JavaScript, bot protection). The agent first tries to automate these downloads with a browser-like client (D-010); this guide is used only for the files that automation still cannot reach.
 
 ## General procedure (applies to every file)
 

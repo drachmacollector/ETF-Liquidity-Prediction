@@ -44,7 +44,7 @@ Sources: Value Research, "NSE closing auction: how it works" (2026) https://www.
 
 - **GLD / GLDM** (SPDR Gold "Historical Archive", column header): *"NAV/Share at 10:30am NYT"*. The archive also gives *"Indicative Price per Share at 4:15pm NYT"*, *"Mid point of bid/ask spread at 4:15pm NYT"* and the issuer premium (mid vs indicative value at 4:15pm). This is valuable: the issuer's own premium is computed at a matched clock (4:15pm), not against the 10:30am NAV. P08 uses it as a timing-robust cross-check for GLD.
 - **SLV** (iShares fund page text): the page labels NAV as an early-morning New York value and notes that NAV *"prior to this date reflects the London Silver Fix benchmark"* (LBMA silver price at 12:00 London ≈ 07:00 New York). Exact wording to be copied into `reference/nav_clock.csv` in P02 from the prospectus.
-- **USO/UNG:** USCF fund page: *"On April 28, 2020, there was a 1-for-8 reverse share split. Historical shares outstanding, net asset value per share has been adjusted to reflect the 1-for-8 reverse share split on a retroactive basis."* (also OQ-04: USCF NAV history is split-adjusted).
+- **USO/UNG:** USCF fund page: *"On April 28, 2020, there was a 1-for-8 reverse share split. Historical shares outstanding, net asset value per share has been adjusted to reflect the 1-for-8 reverse share split on a retroactive basis."* **Correction (P02, D-014):** the downloadable "Historical NAV Performance" CSV is *not* adjusted (USO NAV 2.04 → 17.22 on 2020-04-29); the statement applies to the page display only.
 - Bond and equity ETFs: 16:00 ET (standard; prospectus check in P02).
 
 ## 6. Other facts confirmed in passing
