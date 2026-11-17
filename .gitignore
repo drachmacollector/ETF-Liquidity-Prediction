@@ -1,1 +1,37 @@
+# Secrets
 .env
+
+# Python / tooling
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+*.egg-info/
+
+# Data (raw and rebuildable layers are never committed; manifests are)
+data/raw/
+data/manual_drop/
+data/staged/
+data/curated/
+data/derived/
+
+# Outputs (samples are committed)
+outputs/*
+!outputs/samples/
+
+# Models and heavy run artefacts
+models/
+runs/*/predictions.parquet
+runs/*/*.pkl
+runs/*/models/
+
+# Logs
+logs/
+
+# OS
+desktop.ini
+Thumbs.db
+.DS_Store

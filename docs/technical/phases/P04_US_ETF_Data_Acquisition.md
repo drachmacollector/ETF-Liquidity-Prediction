@@ -35,9 +35,10 @@ Acquire, for every included US instrument and its full listing history, the unad
 ```python
 class SourceAdapter(Protocol):
     source_id: str
+
     def plan(self, instruments: pd.DataFrame, start: date, end: date) -> list[FetchTask]: ...
-    def fetch(self, task: FetchTask) -> RawFile: ...          # writes to data/raw/<source_id>/..., logs manifest
-    def parse(self, raw: RawFile) -> pd.DataFrame: ...       # returns source-shaped typed frame
+    def fetch(self, task: FetchTask) -> RawFile: ...  # writes to data/raw/<source_id>/..., logs manifest
+    def parse(self, raw: RawFile) -> pd.DataFrame: ...  # returns source-shaped typed frame
 ```
 
 Shared behaviour (in a base class): rate limiting per host, retries with exponential back-off and jitter (429/5xx; max 5), user agent from settings, skip if a complete raw file for the same task already exists (unless `--refresh`), SHA-256 checksum, manifest line per file, structured error capture (an adapter failure for one instrument must not stop the batch; it is logged with `status = failed`).

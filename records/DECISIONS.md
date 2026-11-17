@@ -39,3 +39,10 @@ Format, scope and approval rules: [`docs/process/Documentation_Logging_and_Phase
 - Decision: All planned sources (Research Document §9) may be used for non-commercial research and this demonstration. Raw vendor data are never committed or redistributed. If P01 finds a source whose terms prohibit automated access, it is switched to manual-only (MI-04/MI-05) and the user is told. SEC EDGAR requests use a generic project identifier only (no personal email) unless the user decides otherwise.
 - Consequences: P01 still writes `reports/data/terms_of_use_summary.md` for the record; MI-07 does not block P04–P06.
 - Reversible: yes
+
+### D-001 — Use uv for the environment and lockfile
+- Date: 2026-11-17 · Phase: P00 · Decided by: agent (within delegated scope)
+- Context: P00 T00.1 prefers `uv` if it installs; fallback is venv + pip.
+- Decision: `uv` 0.13.9 installed via pip. Environment: `.venv/` created by `uv sync --all-extras --python 3.11`; lockfile `uv.lock` (104 packages). Run commands with `.venv/Scripts/python.exe -m esw …` or `python -m uv run esw …`.
+- Consequences: Recreate the environment with `python -m pip install uv` then `python -m uv sync --all-extras`.
+- Reversible: yes

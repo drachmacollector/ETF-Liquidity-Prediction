@@ -1,0 +1,2 @@
+run_id,started_utc,ended_utc,phase,purpose,model_id,data_cutoff,train_end,test_period,key_metrics_json,status,git_commit,notes
+20261117-152551_smoke,2026-11-17T15:25:51Z,2026-11-17T15:25:51Z,P00,smoke,,,,,"{""smoke"": 1}",ok,6e740ef1f9cfdacc9c2d69156963b3d9edf19a5d+dirty,Smoke test of RunContext created by `esw doctor --smoke-run`.

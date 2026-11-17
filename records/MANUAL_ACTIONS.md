@@ -7,7 +7,7 @@ Statuses: `NOT_NEEDED_YET` · `REQUESTED` · `IN_PROGRESS_USER` · `DONE` · `VE
 | MI | Title | Needed by | Required? | Status | Requested | Done | Verified | Items / notes |
 |---|---|---|---|---|---|---|---|---|
 | MI-01 | Commit policy; optional GitHub remote | P00 | Decision required | VERIFIED | 2026-11-17 | 2026-11-17 | 2026-11-17 | D-003: commit + push after every phase; simple messages. Remote `origin` = github.com/drachmacollector/ETF-Liquidity-Prediction (confirmed reachable, `main` in sync) |
-| MI-02 | Tiingo API key | P01/P04 | Required (unless fallback chosen) | NOT_NEEDED_YET | | | | |
+| MI-02 | Tiingo API key | P01/P04 | Required (unless fallback chosen) | VERIFIED | 2026-11-17 | 2026-11-17 | 2026-11-17 | Key in `.env`; `/api/test` and `/tiingo/daily/gld` return 200 (needs `Content-Type: application/json`) |
 | MI-03 | FRED API key | P06 | Optional | NOT_NEEDED_YET | | | | |
 | MI-04 | Manual US issuer downloads | P04 | Conditional | NOT_NEEDED_YET | | | | File list added by P01 |
 | MI-05 | Manual India data downloads | P05 | Conditional | NOT_NEEDED_YET | | | | File/date list added by P01 |

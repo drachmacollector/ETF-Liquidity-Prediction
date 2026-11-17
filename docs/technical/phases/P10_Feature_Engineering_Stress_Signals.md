@@ -31,9 +31,17 @@ Build the point-in-time feature panel that encodes the observable precursors of 
 Every feature is a function registered with metadata:
 
 ```python
-@feature(id="f4_edge_spread21_z", family="LIQ", markets={"US","IN"}, core=True,
-         lookback=270, unit="z", inputs=["px_daily.open","px_daily.high","px_daily.low","px_daily.close"],
-         missing="null+flag", description="EDGE spread (21d) standardised vs own trailing 250d")
+@feature(
+    id="f4_edge_spread21_z",
+    family="LIQ",
+    markets={"US", "IN"},
+    core=True,
+    lookback=270,
+    unit="z",
+    inputs=["px_daily.open", "px_daily.high", "px_daily.low", "px_daily.close"],
+    missing="null+flag",
+    description="EDGE spread (21d) standardised vs own trailing 250d",
+)
 def f4_edge_spread21_z(ctx: FeatureContext) -> pd.Series: ...
 ```
 

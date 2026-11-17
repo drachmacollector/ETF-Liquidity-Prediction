@@ -2,17 +2,17 @@
 
 Single source of truth for **actual** progress. Status vocabulary and update rules: [`docs/process/Documentation_Logging_and_Phase_Gates.md`](../docs/process/Documentation_Logging_and_Phase_Gates.md) §3.
 
-**Last updated:** 2026-11-17 — documentation set created and pushed; MI-01 and MI-07 done (D-003, D-004); no build work started.
-**Current phase:** P00 (NOT_STARTED)
-**Waiting on user:** nothing yet. Next user step will be MI-02 (Tiingo API key) during P01.
+**Last updated:** 2026-11-17 — P00 VERIFIED (Python project, settings, logging, tests). MI-01, MI-02, MI-07 done.
+**Current phase:** P01 (NOT_STARTED)
+**Waiting on user:** nothing. Next likely user steps: MI-04/MI-05 (manual downloads) only if P01 finds blocked sources.
 **Commit policy:** commit and push after every verified phase, simple messages (D-003).
 
 ## Phases
 
 | Phase | Title | Status | Started | Implemented | Verified | Walkthrough | Acceptance | Blockers | Notes |
 |---|---|---|---|---|---|---|---|---|---|
-| P00 | Environment, repository and governance | NOT_STARTED | | | | | | | |
-| P01 | Source verification and access probes | NOT_STARTED | | | | | | | Needs MI-02 (MI-07 done) |
+| P00 | Environment, repository and governance | VERIFIED | 2026-11-17 | 2026-11-17 | 2026-11-17 | [P00](walkthroughs/P00_walkthrough.md) | [P00](acceptance/P00_acceptance.md) | | 47 tests pass; uv env (D-001) |
+| P01 | Source verification and access probes | NOT_STARTED | | | | | | | MI-02 and MI-07 done |
 | P02 | Reference data: universe, identifiers, calendars | NOT_STARTED | | | | | | | May need MI-09 |
 | P03 | Incident and operational-event catalogue | NOT_STARTED | | | | | | | Needs MI-08 |
 | P04 | US ETF data acquisition | NOT_STARTED | | | | | | | May need MI-04, MI-06 |

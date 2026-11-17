@@ -16,3 +16,10 @@ Format and rules: [`docs/process/Documentation_Logging_and_Phase_Gates.md`](../d
 - Done: Recorded the user's commit policy (D-003: commit and push after every verified phase, simple messages) and terms-of-use acceptance (D-004). MI-01 and MI-07 marked VERIFIED. Confirmed `origin` points to github.com/drachmacollector/ETF-Liquidity-Prediction and `main` is in sync.
 - Updated: CLAUDE.md, P00 T00.9 and the phase-gate protocol to state the commit rule.
 - Next step: start P00. First user step after that: MI-02 (Tiingo API key) in P01.
+
+## 2026-11-17 — P00 — session 1
+- Done: Python project set up with uv (`uv.lock`, `.venv`), package `esw` with settings (all System Spec §4.13 parameters), run tracking, ingest manifest, CLI (`version`, `doctor`, `paths`), `.gitignore`, `.env.example`, 47 tests.
+- Evidence: `records/acceptance/P00_acceptance.md`; smoke run `runs/20261117-152551_smoke/`.
+- MI-02: user added the Tiingo key; verified with two API calls (200). Tiingo needs `Content-Type: application/json`.
+- Decisions: D-001 (uv). Ruff now excludes docs/archive/records/reports.
+- Status: P00 VERIFIED. Next step: P01 source probes.
