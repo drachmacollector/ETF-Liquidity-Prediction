@@ -109,3 +109,25 @@ Format, scope and approval rules: [`docs/process/Documentation_Logging_and_Phase
 - Context: P01 (OQ-04, primary_text_notes §5) quoted the USCF page saying NAV history is adjusted for the 2020 reverse split. The CSV received in MI-04 is raw: USO NAV jumps from 2.04 to 17.22 on 2020-04-29 and UNG shows four jumps (2011, 2012, 2018, 2024). BNO's NAV halves on 2013-08-28, one trading day before its price ex-date (2013-08-29).
 - Decision: Treat the USCF file as unadjusted. All US splits are seeded in `reference/corporate_actions_manual.csv` with `applies_to` saying which raw series shows the jump (iShares NAV files are adjusted, so iShares splits apply to price only). OQ-04 amended.
 - Reversible: yes
+
+### D-015 — US NAV coverage after P04: accepted gaps and exclusions
+- Date: 2026-11-18 · Phase: P04 · Decided by: agent (P04 AC-04.1/AC-04.3 allow exclusion or a logged explanation)
+- Decision: (1) USO, UNG, UGA, USL start NAV on 2009-01-02 (USCF API and MI-04 files both start there): accepted; UNG 2009 and USO 2020 are covered, 2006-2008 USO is not. (2) DBC, DBA, DBO, BKLN, QQQ: Invesco's API gives NAV/TNA only from 2016-09-29: accepted (development-period rows before 2016 have no NAV and are not scored). (3) SPY/DIA NAV from 2003-12-01 (SSGA). (4) SIVR, PPLT, PALL, CORN, WEAT, SOYB, BND, VOO and ASHR set `include = false` (issuer NAV pages not automatable; optional MI-04 rows 6, 8-10). The P01 gate still passes (4/12/8/9/5 included per US group).
+- Reversible: yes (re-include if MI-04 files arrive)
+
+### D-016 — P03 closed as VERIFIED_WITH_PENDING (MI-08 label review becomes an entry condition of P12)
+- Date: 2026-11-18 · Phase: P03 · Decided by: agent, under the user's instruction of 2026-11-18 ("go on implementing as many phases as possible ... I plan to do all the remaining manual tasks all together in one go")
+- Context: P03 needs the user's review of mechanism labels (MI-08). Its purpose is that labels are fixed by people before any model exists. P07-P11 use incident dates and operational events, not the mechanism labels; labels are first used in P13 (root-cause validation), and models first exist in P12.
+- Decision: P03 is `VERIFIED_WITH_PENDING`: every other P03 criterion is met; MI-08 is REQUESTED and is an **entry condition of P12**. Labels are not changed by the agent before MI-08; any change after MI-08 needs a logged decision. The user may reject this and ask to stop at P07 instead.
+- Reversible: yes
+
+### D-017 — No futures curve after 2024-04-05
+- Date: 2026-11-18 · Phase: P06 · Decided by: agent
+- Context: EIA stopped its NYMEX contract 1-4 series on 2024-04-05 (OQ-08). P01 assumed yfinance single contracts could continue the curve, but yfinance drops expired contracts: only still-live contracts (from Nov 2026) have history, and those were not the front months in the past.
+- Decision: `wti_c1..c4`, `hh_c1..c4` end 2024-04-05; roll-yield/contango features (F6 `f6_roll_yield`) are missing after that date (missing-aware). Continuous front-month series (`CL=F`, `NG=F`) cover the whole span.
+- Reversible: yes (if a free contract-level source is found)
+
+### D-018 — India: AMFI monthly AUM and FBIL reference rate not acquired
+- Date: 2026-11-18 · Phase: P05/P06 · Decided by: agent
+- Decision: AMFI scheme-wise monthly AUM (JavaScript page, no stable file) and the FBIL/RBI INR reference rate are not acquired. No core feature depends on AUM; Layer 1 parity uses FRED DEXINUS / yfinance INR=X instead of the RBI rate (documented approximation).
+- Reversible: yes

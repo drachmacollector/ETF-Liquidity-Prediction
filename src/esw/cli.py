@@ -197,5 +197,22 @@ def reference_build_calendars() -> None:
         typer.echo(f"  {k}: {int(v)} trading days")
 
 
+catalogue_app = typer.Typer(no_args_is_help=True, help="P03 incident and operational-event catalogue.")
+app.add_typer(catalogue_app, name="catalogue")
+
+
+@catalogue_app.command("validate")
+def catalogue_validate() -> None:
+    """Validate reference/incidents.csv, operational_events.csv and capacity_us.csv."""
+    from esw.reference.catalogue import run_catalogue_validation
+
+    rep = run_catalogue_validation(get_settings())
+    for e in rep.errors:
+        typer.echo(f"ERROR {e}")
+    typer.echo(rep.summary())
+    if rep.errors:
+        raise typer.Exit(code=1)
+
+
 if __name__ == "__main__":
     app()

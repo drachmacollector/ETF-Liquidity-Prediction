@@ -40,3 +40,11 @@ Format and rules: [`docs/process/Documentation_Logging_and_Phase_Gates.md`](../d
 - Found: NSE archive scriptable from 2007 on nsearchives host; BSE bhavcopy downloadable; 33 Indian funds changed symbol and 21 changed ISIN (lineages recorded); SETFNIF50 → SBINIFTY50 (2026-10-30); SILVRETF → SILVERAG on 2025-09-15; May 2026 duty rise to 15% reported.
 - Decisions D-010–D-014. Issues: I-001/I-003/I-005 updated, I-006 opened. OQ-04, 06, 11, 13, 15, 18, 19 updated; OQ-24, OQ-25 added. MI-09 REQUESTED (11 items).
 - Status: P02 VERIFIED. Next: P03 (incident catalogue); P04–P06 may run in parallel.
+
+## 2026-11-18 — P03-P06 — session 1
+- User: continue through as many phases as possible; batch manual tasks at the end.
+- P03: catalogue built from EDGAR (acceptance times; found EDGAR's "Z" is real UTC) and press sources: 24 incidents, 48 operational events, 596 capacity rows; second pass 22/24 agreement. VERIFIED_WITH_PENDING; MI-08 requested and made an entry condition of P12 (D-016).
+- P04: Tiingo for all 50 US candidates; issuer NAV via SPDR, iShares, SSGA, USCF page API (D-010), Invesco API (curl), Global X manual. 9 funds excluded (D-015). VERIFIED.
+- P05: 4,918 NSE bhavcopies 2007-2026; AMFI NAV with upload times (100% agreement with mfapi); MCX spot; India VIX. VERIFIED.
+- P06: 49 market/FX/futures/index series; curve ends 2024-04-05 (D-017). VERIFIED.
+- Decisions D-015 to D-018. MI-08 REQUESTED. Next: P07 curation.

@@ -97,7 +97,7 @@ class BhavStore:
                 "source": "in_bhav",
                 "instrument_id": None,
                 "url": url,
-                "path": str(p.relative_to(root)) if root else str(p),
+                "path": p.relative_to(root).as_posix() if root else str(p),
                 "sha256": sha256_file(p),
                 "bytes": len(resp.content),
                 "http_status": 200,

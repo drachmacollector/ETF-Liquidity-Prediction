@@ -2,9 +2,9 @@
 
 Single source of truth for **actual** progress. Status vocabulary and update rules: [`docs/process/Documentation_Logging_and_Phase_Gates.md`](../docs/process/Documentation_Logging_and_Phase_Gates.md) §3.
 
-**Last updated:** 2026-11-18 — P02 VERIFIED (reference tables, identifiers, NAV clocks, duty/band tables, calendars).
-**Current phase:** P03 (NOT_STARTED); P04, P05, P06 can also start
-**Waiting on user:** MI-09 (11 India duty/band facts; does not block P03–P06). MI-04 essentials and MI-05 VERIFIED; MI-06 declined (D-011). Automation first (D-010).
+**Last updated:** 2026-11-18 — P03 VERIFIED_WITH_PENDING (MI-08), P04-P06 VERIFIED.
+**Current phase:** P07 (curation)
+**Waiting on user:** MI-08 (incident label review; entry condition of P12, D-016) and MI-09 (11 India duty/band facts). Automation first (D-010).
 **Commit policy:** commit and push after every verified phase, simple messages (D-003).
 
 ## Phases
@@ -14,10 +14,10 @@ Single source of truth for **actual** progress. Status vocabulary and update rul
 | P00 | Environment, repository and governance | VERIFIED | 2026-11-17 | 2026-11-17 | 2026-11-17 | [P00](walkthroughs/P00_walkthrough.md) | [P00](acceptance/P00_acceptance.md) | | 47 tests pass; uv env (D-001) |
 | P01 | Source verification and access probes | VERIFIED | 2026-11-17 | 2026-11-17 | 2026-11-17 | [P01](walkthroughs/P01_walkthrough.md) | [P01](acceptance/P01_acceptance.md) | | 65 tests pass; D-005–D-009; I-001–I-005 |
 | P02 | Reference data: universe, identifiers, calendars | VERIFIED | 2026-11-17 | 2026-11-18 | 2026-11-18 | [P02](walkthroughs/P02_walkthrough.md) | [P02](acceptance/P02_acceptance.md) | | 100 tests pass; D-010–D-014; MI-09 requested |
-| P03 | Incident and operational-event catalogue | NOT_STARTED | | | | | | | Needs MI-08 |
-| P04 | US ETF data acquisition | NOT_STARTED | | | | | | | MI-04 essentials received; retry other issuer files automatically |
-| P05 | India ETF data acquisition | NOT_STARTED | | | | | | | MI-05 received; NSE scriptable from 2007 (D-010) |
-| P06 | Underlying, market-wide and FX data | NOT_STARTED | | | | | | | Optional MI-03 |
+| P03 | Incident and operational-event catalogue | VERIFIED_WITH_PENDING | 2026-11-18 | 2026-11-18 | 2026-11-18 | [P03](walkthroughs/P03_walkthrough.md) | [P03](acceptance/P03_acceptance.md) | MI-08 gates P12 (D-016) | 24 incidents, 48 events, 596 capacity rows |
+| P04 | US ETF data acquisition | VERIFIED | 2026-11-18 | 2026-11-18 | 2026-11-18 | [P04](walkthroughs/P04_walkthrough.md) | [P04](acceptance/P04_acceptance.md) | | 38 US included; D-015 |
+| P05 | India ETF data acquisition | VERIFIED | 2026-11-18 | 2026-11-18 | 2026-11-18 | [P05](walkthroughs/P05_walkthrough.md) | [P05](acceptance/P05_acceptance.md) | | 4,918 bhavcopies 2007-2026 |
+| P06 | Underlying, market-wide and FX data | VERIFIED | 2026-11-18 | 2026-11-18 | 2026-11-18 | [P06](walkthroughs/P06_walkthrough.md) | [P06](acceptance/P06_acceptance.md) | | 49 series; D-017 |
 | P07 | Curation, alignment, PIT store, data quality | NOT_STARTED | | | | | | | |
 | P08 | Pricing layer | NOT_STARTED | | | | | | | |
 | P09 | Labels: episodes and targets | NOT_STARTED | | | | | | | Event-count gate |

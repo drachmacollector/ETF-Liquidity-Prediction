@@ -90,7 +90,7 @@ def register_manual_drops(settings: Settings | None = None, run_id: str = "") ->
             "ts_utc": iso_utc(),
             "source": f"manual:{source}",
             "url": None,
-            "path": str(path.relative_to(root)),
+            "path": path.relative_to(root).as_posix(),
             "sha256": digest,
             "bytes": path.stat().st_size,
             "http_status": None,

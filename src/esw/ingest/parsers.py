@@ -170,7 +170,10 @@ def parse_nse_bhavcopy(raw: bytes) -> pd.DataFrame:
         df["source_schema"] = "udiff"
     elif "SYMBOL" in df.columns:
         df = df.rename(columns=BHAV_LEGACY_MAP)
-        df["date"] = pd.to_datetime(df["date"].str.strip(), format="%d-%b-%Y")
+        d = df["date"].str.strip()
+        # a few legacy files use 2-digit years ("13-Jul-20")
+        fmt = "%d-%b-%y" if d.str.len().iloc[0] <= 9 else "%d-%b-%Y"
+        df["date"] = pd.to_datetime(d, format=fmt)
         df["source_schema"] = "legacy"
         # Early legacy files (before ~2010) have no ISIN or TOTALTRADES column.
         for c in ("isin", "n_trades"):

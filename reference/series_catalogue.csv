@@ -1,23 +1,55 @@
 series_id,description,source_id,source_code,unit,frequency,publication_lag_days,tz,start_expected,notes
-gold_usd_fut,COMEX gold front-month continuous futures settlement,mkt_fut_yf,GC=F,USD/oz,daily,0,America/New_York,2000-08-30,yfinance continuous series (P01); Stooq dropped (D-006)
-silver_usd_fut,COMEX silver front-month continuous futures settlement,mkt_fut_yf,SI=F,USD/oz,daily,0,America/New_York,2000-08-30,yfinance continuous series
+vix,CBOE VIX close,mkt_fred,VIXCLS,index,daily,0,America/New_York,1990-01-02,FRED CSV without key
+ovx,CBOE crude oil volatility index,mkt_fred,OVXCLS,index,daily,0,America/New_York,2007-05-10,
+gvz,CBOE gold volatility index,mkt_fred,GVZCLS,index,daily,0,America/New_York,2008-06-03,
+baa10y,Moody's Baa minus 10y Treasury,mkt_fred,BAA10Y,percent,daily,1,America/New_York,1986-01-02,Credit spread (ICE BofA OAS truncated on FRED; OQ-09)
+aaa10y,Moody's Aaa minus 10y Treasury,mkt_fred,AAA10Y,percent,daily,1,America/New_York,1983-01-03,Companion to baa10y
+ust10y,10y Treasury CMT,mkt_fred,DGS10,percent,daily,1,America/New_York,1962-01-02,
+ust2y,2y Treasury CMT,mkt_fred,DGS2,percent,daily,1,America/New_York,1976-06-01,
+tedrate,TED spread (discontinued 2022),mkt_fred,TEDRATE,percent,daily,1,America/New_York,1986-01-02,
+usd_broad,Nominal broad dollar index (2006+),mkt_fred,DTWEXBGS,index,daily,1,America/New_York,2006-01-02,
+usd_major_old,Major-currencies dollar index (to 2019),mkt_fred,DTWEXM,index,daily,1,America/New_York,1973-01-02,
+usdinr,INR per USD,mkt_fred,DEXINUS,INR/USD,daily,1,America/New_York,1973-01-02,FRED H.10; RBI/FBIL reference rate is the Indian alternative (P06)
+usdjpy,JPY per USD,mkt_fred,DEXJPUS,JPY/USD,daily,1,America/New_York,1971-01-04,
+usdhkd,HKD per USD,mkt_fred,DEXHKUS,HKD/USD,daily,1,America/New_York,1981-01-02,
+usdcny,CNY per USD,mkt_fred,DEXCHUS,CNY/USD,daily,1,America/New_York,1981-01-02,
+usdmxn,MXN per USD,mkt_fred,DEXMXUS,MXN/USD,daily,1,America/New_York,1993-11-08,
+usdbrl,BRL per USD,mkt_fred,DEXBZUS,BRL/USD,daily,1,America/New_York,1995-01-02,
+eurusd,USD per EUR,mkt_fred,DEXUSEU,USD/EUR,daily,1,America/New_York,1999-01-04,
+usdtry,TRY per USD,mkt_yf,TRY=X,TRY/USD,daily,0,Europe/London,2005-01-03,
+usdrub,RUB per USD,mkt_yf,RUB=X,RUB/USD,daily,0,Europe/London,2003-12-01,FRED has no daily RUB series; monthly only (P06 may use yfinance RUB=X daily)
+usdegp,EGP per USD,mkt_yf,EGP=X,EGP/USD,daily,0,Europe/London,2001-06-01,yfinance; only needed if EGPT data become available
+usdinr_yf,"INR per USD (yfinance, London close)",mkt_yf,INR=X,INR/USD,daily,0,Europe/London,2003-12-01,
+gold_usd_fut,COMEX gold front continuous,mkt_yf,GC=F,USD/oz,daily,0,America/New_York,2000-08-30,yfinance continuous series (P01); Stooq dropped (D-006)
+silver_usd_fut,COMEX silver front continuous,mkt_yf,SI=F,USD/oz,daily,0,America/New_York,2000-08-30,yfinance continuous series
+platinum_usd_fut,NYMEX platinum front continuous,mkt_yf,PL=F,USD/oz,daily,0,America/New_York,1997-10-29,
+palladium_usd_fut,NYMEX palladium front continuous,mkt_yf,PA=F,USD/oz,daily,0,America/New_York,1998-09-28,
+copper_usd_fut,COMEX copper front continuous,mkt_yf,HG=F,USD/lb,daily,0,America/New_York,2000-08-30,
+wti_fut,NYMEX WTI front continuous,mkt_yf,CL=F,USD/bbl,daily,0,America/New_York,2000-08-23,
+brent_fut,ICE Brent front continuous,mkt_yf,BZ=F,USD/bbl,daily,0,America/New_York,2007-07-30,
+hh_fut,NYMEX natural gas front continuous,mkt_yf,NG=F,USD/MMBtu,daily,0,America/New_York,2000-08-30,
+rbob_fut,NYMEX RBOB front continuous,mkt_yf,RB=F,USD/gal,daily,0,America/New_York,2000-11-01,
+wti_c1,NYMEX WTI contract 1 (EIA),mkt_eia,RCLC1,USD/bbl,daily,1,America/New_York,1983-04-04,EIA series ends 2024-04-05 (OQ-08). Not continued: yfinance keeps only live contracts (D-017); curve features are missing after 2024-04-05
+wti_c2,NYMEX WTI contract 2 (EIA),mkt_eia,RCLC2,USD/bbl,daily,1,America/New_York,1985-01-02,As wti_c1
+wti_c3,NYMEX WTI contract 3 (EIA),mkt_eia,RCLC3,USD/bbl,daily,1,America/New_York,1983-03-30,As wti_c1
+wti_c4,NYMEX WTI contract 4 (EIA),mkt_eia,RCLC4,USD/bbl,daily,1,America/New_York,1985-01-02,As wti_c1
+hh_c1,NYMEX natural gas contract 1 (EIA),mkt_eia,RNGC1,USD/MMBtu,daily,1,America/New_York,1994-01-13,EIA series ends 2024-04-05; not continued (D-017)
+hh_c2,NYMEX natural gas contract 2 (EIA),mkt_eia,RNGC2,USD/MMBtu,daily,1,America/New_York,1994-01-12,As hh_c1
+hh_c3,NYMEX natural gas contract 3 (EIA),mkt_eia,RNGC3,USD/MMBtu,daily,1,America/New_York,1994-01-19,As hh_c1
+hh_c4,NYMEX natural gas contract 4 (EIA),mkt_eia,RNGC4,USD/MMBtu,daily,1,America/New_York,1993-12-20,As hh_c1
+idx_spx,S&P 500,mkt_yf,^GSPC,index,daily,0,America/New_York,1927-12-30,
+idx_ndx,Nasdaq-100,mkt_yf,^NDX,index,daily,0,America/New_York,1985-10-01,
+idx_nyfang,NYSE FANG+,mkt_yf,^NYFANG,index,daily,0,America/New_York,2014-09-22,
+idx_n225,Nikkei 225,mkt_yf,^N225,index,daily,0,Asia/Tokyo,1965-01-05,
+idx_hsi,Hang Seng,mkt_yf,^HSI,index,daily,0,Asia/Hong_Kong,1986-12-31,
+idx_bvsp,Bovespa,mkt_yf,^BVSP,index,daily,0,America/Sao_Paulo,1993-04-27,
+idx_mxx,Mexico IPC,mkt_yf,^MXX,index,daily,0,America/Mexico_City,1991-11-08,
+idx_xu100,BIST 100,mkt_yf,XU100.IS,index,daily,0,Europe/Istanbul,1997-07-01,
+idx_athex,Athens General Composite,mkt_yf,GD.AT,index,daily,0,Europe/Athens,1997-07-01,
+idx_nifty50,Nifty 50,mkt_yf,^NSEI,index,daily,0,Asia/Kolkata,2007-09-17,
 gold_usd_navimpl,GLD NAV per share / ounces per share (approx. LBMA Gold Price PM),derived,us_iss_spdr_gold:GLD,USD/oz,daily,0,Europe/London,2004-11-18,Derived from the SPDR Gold archive (P04/P06)
-wti_c1,NYMEX WTI crude futures contract 1,mkt_eia,RCLC1,USD/bbl,daily,1,America/New_York,1983-04-04,EIA series ends 2024-04-05 (OQ-08); continued from yfinance single contracts (CL<M><YY>.NYM)
-wti_c2,NYMEX WTI crude futures contract 2,mkt_eia,RCLC2,USD/bbl,daily,1,America/New_York,1983-04-04,As wti_c1
-wti_c3,NYMEX WTI crude futures contract 3,mkt_eia,RCLC3,USD/bbl,daily,1,America/New_York,1983-04-04,As wti_c1
-wti_c4,NYMEX WTI crude futures contract 4,mkt_eia,RCLC4,USD/bbl,daily,1,America/New_York,1983-04-04,As wti_c1
-hh_c1,NYMEX Henry Hub natural gas futures contract 1,mkt_eia,RNGC1,USD/MMBtu,daily,1,America/New_York,1994-01-13,EIA series ends 2024-04-05; continued from yfinance single contracts (NG<M><YY>.NYM)
-hh_c2,NYMEX Henry Hub natural gas futures contract 2,mkt_eia,RNGC2,USD/MMBtu,daily,1,America/New_York,1994-01-13,As hh_c1
-hh_c3,NYMEX Henry Hub natural gas futures contract 3,mkt_eia,RNGC3,USD/MMBtu,daily,1,America/New_York,1994-01-13,As hh_c1
-hh_c4,NYMEX Henry Hub natural gas futures contract 4,mkt_eia,RNGC4,USD/MMBtu,daily,1,America/New_York,1994-01-13,As hh_c1
-vix,CBOE Volatility Index close,mkt_fred,VIXCLS,index,daily,0,America/New_York,1990-01-02,FRED CSV without key
-baa10y,Moody's Baa corporate yield minus 10-year Treasury,mkt_fred,BAA10Y,percent,daily,1,America/New_York,1986-01-02,Credit spread (ICE BofA OAS truncated on FRED; OQ-09)
-aaa10y,Moody's Aaa corporate yield minus 10-year Treasury,mkt_fred,AAA10Y,percent,daily,1,America/New_York,1986-01-02,Companion to baa10y
-ust10y,10-year Treasury constant maturity yield,mkt_fred,DGS10,percent,daily,1,America/New_York,1962-01-02,
-usd_broad,Nominal broad US dollar index,mkt_fred,DTWEXBGS,index,daily,1,America/New_York,2006-01-02,
-usdinr,INR per USD (noon buying rate),mkt_fred,DEXINUS,INR/USD,daily,1,America/New_York,1973-01-02,FRED H.10; RBI/FBIL reference rate is the Indian alternative (P06)
-usdrub,RUB per USD,mkt_fred,CCUSMA02RUM618N,RUB/USD,monthly,30,Europe/Moscow,1992-01-01,FRED has no daily RUB series; monthly only (P06 may use yfinance RUB=X daily)
-usdegp,EGP per USD,mkt_fx_yf,EGP=X,EGP/USD,daily,0,Africa/Cairo,2003-12-01,yfinance; only needed if EGPT data become available
+silver_usd_navimpl,SLV NAV / ounces per share,derived,us_iss_ishares:SLV,USD/oz,daily,0,Europe/London,,UNAVAILABLE: iShares download has no ounces-per-share column; features using it fall back to silver_usd_fut
 india_vix,India VIX close,in_indiavix,^INDIAVIX,index,daily,0,Asia/Kolkata,2008-03-03,yfinance (NSE site not scripted in P01)
 in_gold_spot,MCX polled gold spot (Ahmedabad) per 10 g,in_spot_mcx,MCX Spot Market Price GOLD,INR/10g,intraday polls (2-5 per day),0,Asia/Kolkata,2005-06-06,MI-05 manual file (2005-06-06..2026-11-17); purity not stated in the file (995 per MCX spot polling practice; confirm in P05)
 in_silver_spot,MCX polled silver spot (Ahmedabad) per kg,in_spot_mcx,MCX Spot Market Price SILVER,INR/kg,intraday polls (2-5 per day),0,Asia/Kolkata,2005-05-14,MI-05 manual file (2005-05-14..2026-11-17); purity 999 per MCX practice (confirm in P05)
+usdinr_rbi,RBI/FBIL INR reference rate,in_fbil,FBIL reference rate,INR/USD,daily,0,Asia/Kolkata,,UNAVAILABLE in P06 (FBIL/RBI pages not scriptable in this phase); Layer 1 parity uses usdinr (FRED noon NY) and usdinr_yf; the difference is a documented approximation
