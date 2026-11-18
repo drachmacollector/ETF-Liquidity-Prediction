@@ -39,7 +39,7 @@ params:
   LEAD_WINDOW: 5              # §4.8 window for counting a warning                     (frozen at P11)
   DEV_END: 2019-12-31         # §9 last date of the development period (US)            (frozen at P11)
   LOCKBOX_START: 2020-01-01   # §9 first date of the US lockbox                        (frozen at P11)
-  DATA_CUTOFF: null           # set in P07                                             (frozen at P11)
+  DATA_CUTOFF: 2026-11-16     # set in P07                                             (frozen at P11)
   ALERT_BUDGET_HIGH: 1.0      # max HIGH alert chains per eligible ETF-quarter outside episodes (frozen at P11)
   ALERT_BUDGET_WATCH: 1.0     # max WATCH+ alert chains per eligible ETF-month outside episodes (frozen at P11)
   THR_WATCH: null             # set in P12                                             (frozen before lockbox)

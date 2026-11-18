@@ -48,3 +48,6 @@ Format and rules: [`docs/process/Documentation_Logging_and_Phase_Gates.md`](../d
 - P05: 4,918 NSE bhavcopies 2007-2026; AMFI NAV with upload times (100% agreement with mfapi); MCX spot; India VIX. VERIFIED.
 - P06: 49 market/FX/futures/index series; curve ends 2024-04-05 (D-017). VERIFIED.
 - Decisions D-015 to D-018. MI-08 REQUESTED. Next: P07 curation.
+
+## 2026-11-18 — P07 — session 1
+- Curated PIT store built and validated; 24 Indian split candidates resolved (37 verified rows); NAV-spike rule tightened; DATA_CUTOFF 2026-11-16; rebuild deterministic. VERIFIED. Next: P08.

@@ -2,8 +2,8 @@
 
 Single source of truth for **actual** progress. Status vocabulary and update rules: [`docs/process/Documentation_Logging_and_Phase_Gates.md`](../docs/process/Documentation_Logging_and_Phase_Gates.md) §3.
 
-**Last updated:** 2026-11-18 — P03 VERIFIED_WITH_PENDING (MI-08), P04-P06 VERIFIED.
-**Current phase:** P07 (curation)
+**Last updated:** 2026-11-18 — P07 VERIFIED (curated store, DATA_CUTOFF 2026-11-16).
+**Current phase:** P08 (pricing layer)
 **Waiting on user:** MI-08 (incident label review; entry condition of P12, D-016) and MI-09 (11 India duty/band facts). Automation first (D-010).
 **Commit policy:** commit and push after every verified phase, simple messages (D-003).
 
@@ -18,7 +18,7 @@ Single source of truth for **actual** progress. Status vocabulary and update rul
 | P04 | US ETF data acquisition | VERIFIED | 2026-11-18 | 2026-11-18 | 2026-11-18 | [P04](walkthroughs/P04_walkthrough.md) | [P04](acceptance/P04_acceptance.md) | | 38 US included; D-015 |
 | P05 | India ETF data acquisition | VERIFIED | 2026-11-18 | 2026-11-18 | 2026-11-18 | [P05](walkthroughs/P05_walkthrough.md) | [P05](acceptance/P05_acceptance.md) | | 4,918 bhavcopies 2007-2026 |
 | P06 | Underlying, market-wide and FX data | VERIFIED | 2026-11-18 | 2026-11-18 | 2026-11-18 | [P06](walkthroughs/P06_walkthrough.md) | [P06](acceptance/P06_acceptance.md) | | 49 series; D-017 |
-| P07 | Curation, alignment, PIT store, data quality | NOT_STARTED | | | | | | | |
+| P07 | Curation, alignment, PIT store, data quality | VERIFIED | 2026-11-18 | 2026-11-18 | 2026-11-18 | [P07](walkthroughs/P07_walkthrough.md) | [P07](acceptance/P07_acceptance.md) | | DATA_CUTOFF 2026-11-16 |
 | P08 | Pricing layer | NOT_STARTED | | | | | | | |
 | P09 | Labels: episodes and targets | NOT_STARTED | | | | | | | Event-count gate |
 | P10 | Feature engineering | NOT_STARTED | | | | | | | |
@@ -34,7 +34,7 @@ Single source of truth for **actual** progress. Status vocabulary and update rul
 
 | Artefact | Value | Recorded in |
 |---|---|---|
-| `DATA_CUTOFF` | — | P07 |
+| `DATA_CUTOFF` | 2026-11-16 | P07 |
 | Pre-registration Part A hash | — | D-P11-PREREG-A |
 | Pre-registration Part B hash | — | D-P12-PREREG-B |
 | Pre-registration final hash | — | D-P13-PREREG-EXPL |

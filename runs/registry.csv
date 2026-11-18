@@ -9,3 +9,6 @@ run_id,started_utc,ended_utc,phase,purpose,model_id,data_cutoff,train_end,test_p
 20261117-214230_ingest_us_px,2026-11-17T21:42:30Z,2026-11-17T22:42:40Z,P04,ingest us prices (tiingo backfill),,,,,"{""ok"": 50}",ok,2b5dfe53302e77d0530b365aaccf3ff6d4d19fbb+dirty,
 20261117-215656_ingest_in_nav,2026-11-17T21:56:56Z,2026-11-17T23:00:25Z,P05,ingest Indian NAV (AMFI API + mfapi),,,,,"{""amfi_rows"": 134291, ""crosscheck_min_agreement"": 1.0, ""schemes"": 99}",ok,2b5dfe53302e77d0530b365aaccf3ff6d4d19fbb+dirty,
 20261117-215601_ingest_in_bhav,2026-11-17T21:56:01Z,2026-11-18T00:12:30Z,P05,ingest NSE bhavcopy backfill,,,,,"{""days"": 5201, ""failed"": 0, ""files"": 4918, ""missing"": 283}",ok,2b5dfe53302e77d0530b365aaccf3ff6d4d19fbb+dirty,
+20261118-031609_curate,2026-11-18T03:16:09Z,2026-11-18T03:16:27Z,P07,curate,,,,,"{""data_cutoff"": ""2026-11-16"", ""flags"": 598}",ok,b6388826c048532c5962896f8b42768828ac755a+dirty,
+20261118-031800_curate,2026-11-18T03:18:00Z,2026-11-18T03:18:17Z,P07,curate,,,,,"{""data_cutoff"": ""2026-11-16"", ""flags"": 598}",ok,b6388826c048532c5962896f8b42768828ac755a+dirty,
+20261118-031901_curate,2026-11-18T03:19:01Z,2026-11-18T03:19:19Z,P07,curate,,,,,"{""data_cutoff"": ""2026-11-16"", ""flags"": 598}",ok,b6388826c048532c5962896f8b42768828ac755a+dirty,

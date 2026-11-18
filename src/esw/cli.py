@@ -214,5 +214,31 @@ def catalogue_validate() -> None:
         raise typer.Exit(code=1)
 
 
+@app.command("curate")
+def curate_cmd() -> None:
+    """P07: build the curated point-in-time store in data/curated/ and the quality reports."""
+    from esw.curate.build import build_all
+    from esw.curate.report import write_reports
+
+    settings = get_settings()
+    with RunContext(phase="P07", purpose="curate", slug="curate", settings=settings) as run:
+        res = build_all(settings)
+        write_reports(settings, res)
+        run.log_metrics({"data_cutoff": str(res["cutoff"].date()), "flags": len(res["flags"])})
+    typer.echo(f"curated store built; DATA_CUTOFF {res['cutoff'].date()}")
+
+
+@app.command("rebuild")
+def rebuild_cmd(
+    curated: bool = typer.Option(True, "--curated/--no-curated", help="Delete and rebuild data/curated."),
+) -> None:
+    """Delete and regenerate derived layers (P07: --curated)."""
+    from esw.curate.build import rebuild
+
+    if curated:
+        res = rebuild(get_settings())
+        typer.echo(f"rebuilt data/curated (DATA_CUTOFF {res['cutoff'].date()})")
+
+
 if __name__ == "__main__":
     app()

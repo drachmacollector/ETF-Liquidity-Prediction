@@ -17,7 +17,7 @@
 - instruments_in: schema OK (100 rows)
 - symbol_history: schema OK (293 rows)
 - nav_clock: schema OK (158 rows)
-- corporate_actions_manual: schema OK (45 rows)
+- corporate_actions_manual: schema OK (60 rows)
 - duty_india: schema OK (19 rows)
 - band_regimes_india: schema OK (14 rows)
 - series_catalogue: schema OK (54 rows)

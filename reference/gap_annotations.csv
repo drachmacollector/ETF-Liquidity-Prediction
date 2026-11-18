@@ -1,0 +1,5 @@
+instrument_id,start,end,note
+US:EWH,1997-10-20,1997-11-07,Asian financial crisis: Hong Kong market crash Oct 1997 (stale home-market prices vs US trading)
+IN:INF204KB19I1,2020-03-09,2020-04-09,March 2020 COVID crash: Hang Seng BeES premium vs stale HK-close NAV (INC-IN-2020-COVID window)
+IN:INF247L01AP3,2018-03-01,2018-11-30,N100 traded at 25%+ premiums on several 2018 days (thin liquidity; price and NAV both checked in bhavcopy/AMFI); cause not documented
+IN:INF846K01W80,2020-07-23,2020-07-23,"First post-split session (1:100): close 52.35 vs NAV/100 = 44.21, thin trading on the split day"

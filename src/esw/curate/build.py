@@ -205,6 +205,7 @@ def build_nav(
     mf["nav_source"] = "in_mfapi"
     mf["known_at"] = pit.amfi_nav_known_at(mf["date"])
     nav = pd.concat([us, amfi, mf], ignore_index=True)
+    nav = nav[nav["nav"] > 0]  # drops missing and zero NAVs (issuer placeholder rows)
     nav["ingested_at"] = _ingested(nav["raw_path"], times)
     nav["source"] = nav["nav_source"]
     parts = []
@@ -228,7 +229,7 @@ def build_series(settings: Settings, times: dict) -> pd.DataFrame:
         (settings.path("staged") / "in_misc").glob("*.parquet")
     )
     for p in paths:
-        d = pd.read_parquet(p)
+        d = pd.read_parquet(p).dropna(subset=["value"])
         sid = str(d["series_id"].iloc[0])
         lag, tz = (
             (int(cat.at[sid, "publication_lag_days"]), cat.at[sid, "tz"])
@@ -308,15 +309,37 @@ def quality_checks(
                 "error",
                 f"price ratio {r.price_ratio:.4f}, NAV ratio {r.nav_ratio:.4f}, leg {r.leg}, fraction {r.fraction:g}",
             )
+    closes = px[["instrument_id", "date", "close"]]
     for iid, g in nav.groupby("instrument_id"):
-        g = g.sort_values("date")
+        g = g.sort_values("date").merge(
+            closes[closes["instrument_id"] == iid][["date", "close"]], on="date", how="left"
+        )
         ret = np.log(g["nav"]).diff()
+        rpx = np.log(g["close"]).diff()
         mad = (ret - ret.median()).abs().median() * 1.4826
-        if mad and mad > 0:
+        dif = ret - rpx
+        mad_d = (dif - dif.median()).abs().median() * 1.4826
+        if mad and mad > 0 and mad_d and mad_d > 0:
             z = ret / mad
-            spike = (z.abs() > 5) & (z.shift(-1).abs() > 5) & (np.sign(z) != np.sign(z.shift(-1)))
+            back = (ret + ret.shift(-1)).abs() < 0.5 * ret.abs()  # NAV returns to about its previous level
+            # NAV jumps and reverses while the price does not do the same (P07 T07.5)
+            spike = (
+                (z.abs() > 5)
+                & (z.shift(-1).abs() > 5)
+                & (np.sign(z) != np.sign(z.shift(-1)))
+                & (rpx.abs() < 0.5 * ret.abs())  # the price did not make the jump ...
+                & (rpx.shift(-1).abs() < 0.5 * ret.shift(-1).abs())  # ... nor the reversal
+                & back
+            )
             for d in g.loc[spike, "date"]:
-                add("nav_daily", iid, d, "nav_spike", "warn", "jump-and-reverse > 5 robust sd")
+                add(
+                    "nav_daily",
+                    iid,
+                    d,
+                    "nav_spike",
+                    "warn",
+                    "NAV jump-and-reverse > 5 robust sd, not mirrored by the price",
+                )
         same = g["nav"].eq(g["nav"].shift())
         run = same.groupby((~same).cumsum()).cumsum()
         for d in g.loc[run == 3, "date"]:
