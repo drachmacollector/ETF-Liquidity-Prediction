@@ -2,8 +2,8 @@
 
 Single source of truth for **actual** progress. Status vocabulary and update rules: [`docs/process/Documentation_Logging_and_Phase_Gates.md`](../docs/process/Documentation_Logging_and_Phase_Gates.md) §3.
 
-**Last updated:** 2026-11-18 — P07 VERIFIED (curated store, DATA_CUTOFF 2026-11-16).
-**Current phase:** P08 (pricing layer)
+**Last updated:** 2026-11-19 — P08 VERIFIED (pricing panel; known facts reproduced, one explained).
+**Current phase:** P09 (labels)
 **Waiting on user:** MI-08 (incident label review; entry condition of P12, D-016) and MI-09 (11 India duty/band facts). Automation first (D-010).
 **Commit policy:** commit and push after every verified phase, simple messages (D-003).
 
@@ -19,7 +19,7 @@ Single source of truth for **actual** progress. Status vocabulary and update rul
 | P05 | India ETF data acquisition | VERIFIED | 2026-11-18 | 2026-11-18 | 2026-11-18 | [P05](walkthroughs/P05_walkthrough.md) | [P05](acceptance/P05_acceptance.md) | | 4,918 bhavcopies 2007-2026 |
 | P06 | Underlying, market-wide and FX data | VERIFIED | 2026-11-18 | 2026-11-18 | 2026-11-18 | [P06](walkthroughs/P06_walkthrough.md) | [P06](acceptance/P06_acceptance.md) | | 49 series; D-017 |
 | P07 | Curation, alignment, PIT store, data quality | VERIFIED | 2026-11-18 | 2026-11-18 | 2026-11-18 | [P07](walkthroughs/P07_walkthrough.md) | [P07](acceptance/P07_acceptance.md) | | DATA_CUTOFF 2026-11-16 |
-| P08 | Pricing layer | NOT_STARTED | | | | | | | |
+| P08 | Pricing layer | VERIFIED | 2026-11-19 | 2026-11-19 | 2026-11-19 | [P08](walkthroughs/P08_walkthrough.md) | [P08](acceptance/P08_acceptance.md) |  | 315k rows; D-019, D-020 |
 | P09 | Labels: episodes and targets | NOT_STARTED | | | | | | | Event-count gate |
 | P10 | Feature engineering | NOT_STARTED | | | | | | | |
 | P11 | Evaluation harness, baselines, pre-registration A | NOT_STARTED | | | | | | | Optional MI-10 |

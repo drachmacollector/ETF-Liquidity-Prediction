@@ -12,3 +12,5 @@ run_id,started_utc,ended_utc,phase,purpose,model_id,data_cutoff,train_end,test_p
 20261118-031609_curate,2026-11-18T03:16:09Z,2026-11-18T03:16:27Z,P07,curate,,,,,"{""data_cutoff"": ""2026-11-16"", ""flags"": 598}",ok,b6388826c048532c5962896f8b42768828ac755a+dirty,
 20261118-031800_curate,2026-11-18T03:18:00Z,2026-11-18T03:18:17Z,P07,curate,,,,,"{""data_cutoff"": ""2026-11-16"", ""flags"": 598}",ok,b6388826c048532c5962896f8b42768828ac755a+dirty,
 20261118-031901_curate,2026-11-18T03:19:01Z,2026-11-18T03:19:19Z,P07,curate,,,,,"{""data_cutoff"": ""2026-11-16"", ""flags"": 598}",ok,b6388826c048532c5962896f8b42768828ac755a+dirty,
+20261119-165107_curate,2026-11-19T16:51:07Z,2026-11-19T16:52:08Z,P07,curate,,,,,"{""data_cutoff"": ""2026-11-16"", ""flags"": 598}",ok,b64cfa89ac7e33db565ba08fb5bade8020602e2d+dirty,
+20261119-165556_pricing,2026-11-19T16:55:56Z,2026-11-19T16:57:48Z,P08,build pricing panel,,,,,"{""instruments"": 106, ""rows"": 315012}",ok,b64cfa89ac7e33db565ba08fb5bade8020602e2d+dirty,

@@ -9,7 +9,7 @@
 ## Warnings
 
 - duty_india: 11 row(s) verified = n (listed in MI-09)
-- band_regimes_india: 10 row(s) verified = n (listed in MI-09)
+- band_regimes_india: 11 row(s) verified = n (listed in MI-09)
 
 ## Checks run
 
@@ -19,7 +19,7 @@
 - nav_clock: schema OK (158 rows)
 - corporate_actions_manual: schema OK (60 rows)
 - duty_india: schema OK (19 rows)
-- band_regimes_india: schema OK (14 rows)
+- band_regimes_india: schema OK (16 rows)
 - series_catalogue: schema OK (54 rows)
 - calendar_overrides_in: schema OK (29 rows)
 - T02.11-1 nav_clock coverage of included instruments

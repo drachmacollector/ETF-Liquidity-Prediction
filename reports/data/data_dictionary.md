@@ -30,7 +30,7 @@ Every table carries `source`; time-stamped tables carry `known_at` (UTC) per Sys
 
 ## calendar
 
-- Primary key: `market, date`; source: exchange_calendars; India: NSE bhavcopy presence for past dates; `known_at`: scheduled: known at all times; rows: 80,554
+- Primary key: `market, date`; source: exchange_calendars; India: NSE bhavcopy presence for past dates; `known_at`: scheduled: known at all times; rows: 80,563
 
 | Column | Type | Description |
 |---|---|---|
@@ -237,7 +237,7 @@ Every table carries `source`; time-stamped tables carry `known_at` (UTC) per Sys
 
 ## band_regime
 
-- Primary key: `market, exchange, group, effective_from`; source: reference (exchange circulars); `known_at`: known at all times; rows: 14
+- Primary key: `market, exchange, group, effective_from`; source: reference (exchange circulars); `known_at`: known at all times; rows: 16
 
 | Column | Type | Description |
 |---|---|---|

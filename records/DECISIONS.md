@@ -131,3 +131,18 @@ Format, scope and approval rules: [`docs/process/Documentation_Logging_and_Phase
 - Date: 2026-11-18 · Phase: P05/P06 · Decided by: agent
 - Decision: AMFI scheme-wise monthly AUM (JavaScript page, no stable file) and the FBIL/RBI INR reference rate are not acquired. No core feature depends on AUM; Layer 1 parity uses FRED DEXINUS / yfinance INR=X instead of the RBI rate (documented approximation).
 - Reversible: yes
+
+### D-019 — NSE gold/silver price band before Feb 2026 verified from exchange data; inferred lock class
+- Date: 2026-11-19 · Phase: P08 · Decided by: agent (evidence)
+- Context: The band rules were unverified (MI-09 B1), so every pre-September-2026 Indian day had `lock_class = unknown`.
+- Evidence: in NSE bhavcopies, gold and silver ETF daily lows/highs equal 0.8 / 1.2 times the T-2 NAV (AMFI) within 0.2% on 47 instrument-days from Jul 2020 to Jan 2026, never on a T-1 basis. On 1 Feb 2026 silver ETFs closed exactly at 0.8 times T-1 NAV (14 locks; 5 lows on 2 Feb) while gold ETFs touched 0.8 times T-2 NAV (15).
+- Decision: NSE `gold_silver` +/-20% on T-2 NAV is `verified = y` for 2020-07-01 to 2026-01-31 (source: the exchange's own prices). 2007-2020 and Feb-Sep 2026 stay unverified (MI-09 B1, B3; the Feb 2026 interim looks metal-specific). The panel adds `lock_class_inferred` (`inferred_locked` when the close sits at +/-20% of T-1 or T-2 NAV at the day's extreme) next to the specified `lock_class`; it is not used for `valid`.
+- Finding: Indian international ETFs show 1,119 inferred upper-band locks (2018-2026): their premiums were capped by the +/-20% band.
+- Reversible: yes
+
+### D-020 — Known-fact check SILVERAG Oct 2025 not reproduced; accepted with evidence
+- Date: 2026-11-19 · Phase: P08 · Decided by: agent (P08 T08.3 requires investigation, not tuning)
+- Expected (Research Doc I4): close vs NAV at least +300 bps between 9 and 16 Oct 2025. Measured: max +200 bps (14 Oct); +151 (9 Oct), -183 (10 Oct).
+- Investigation: the data are right (bhavcopy and AMFI agree with mfapi). Reported 5-10% premiums were against intraday iNAV. Several peers did exceed +300 bps against NAV on 9 Oct (Tata 1,550, Zerodha 753, HDFC 690, UTI 606, ABSL 429), but the Mirae NAV moved with the domestic market (154 to 173 over 9-14 Oct). The squeeze shows mainly in Layer 1: domestic silver spot vs import parity +443 bps (9 Oct) rising to +2,047 bps (13 Oct).
+- Decision: keep definitions; record the measured value; the incident note in `reference/incidents.csv` is updated. The acceptance test asserts the measured range.
+- Reversible: n/a (measurement)

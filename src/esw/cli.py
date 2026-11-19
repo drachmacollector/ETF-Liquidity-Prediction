@@ -240,5 +240,25 @@ def rebuild_cmd(
         typer.echo(f"rebuilt data/curated (DATA_CUTOFF {res['cutoff'].date()})")
 
 
+build_app = typer.Typer(
+    no_args_is_help=True, help="Derived layers: pricing (P08), labels (P09), features (P10)."
+)
+app.add_typer(build_app, name="build")
+
+
+@build_app.command("pricing")
+def build_pricing() -> None:
+    """P08: pricing panel and reports."""
+    from esw.pricing.diagnostics import build_reports
+    from esw.pricing.panel import build_panel
+
+    settings = get_settings()
+    with RunContext(phase="P08", purpose="build pricing panel", slug="pricing", settings=settings) as run:
+        panel = build_panel(settings)
+        rep = build_reports(settings)
+        run.log_metrics({"rows": len(panel), "instruments": int(panel["instrument_id"].nunique())})
+    typer.echo(rep["facts"].to_string(index=False))
+
+
 if __name__ == "__main__":
     app()

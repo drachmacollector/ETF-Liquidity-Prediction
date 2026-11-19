@@ -23,6 +23,22 @@ def cutoff(settings: Settings) -> pd.Timestamp:
     return pd.Timestamp((settings.path("curated") / "DATA_CUTOFF.txt").read_text().strip())
 
 
+def infer_lock(df: pd.DataFrame, band: float = 0.20, tol: float = 0.0025) -> pd.Series:
+    """Where the regime is unknown, infer a lock from the data: close = high = low (or close at the
+    high/low) at +/-20% of T-1 or T-2 NAV. Reported alongside the spec's `lock_class`; not used for `valid`."""
+    out = df["lock_class"].copy()
+    unk = out == "unknown"
+    for k in (1, 2):
+        ref = df["nav"].shift(k)
+        dn = (df["close"] / (ref * (1 - band)) - 1).abs() < tol
+        up = (df["close"] / (ref * (1 + band)) - 1).abs() < tol
+        at_extreme = (dn & (df["close"] <= df["low"] * (1 + 1e-9))) | (
+            up & (df["close"] >= df["high"] * (1 - 1e-9))
+        )
+        out[unk & at_extreme] = "inferred_locked"
+    return out
+
+
 def nav_basis_on(nc: pd.DataFrame, iid: str, dates: pd.Series) -> pd.Series:
     g = nc[nc["instrument_id"] == iid].sort_values("effective_from")
     out = pd.Series(None, index=dates.index, dtype="object")
@@ -84,7 +100,9 @@ def build_panel(settings: Settings | None = None, instruments: list[str] | None 
         if r.market == "IN":
             lk = classify(df[["date", "close", "high", "low", "nav"]], bands, r.group)
             df = pd.concat([df.reset_index(drop=True), lk], axis=1)
+            df["lock_class_inferred"] = infer_lock(df)
         else:
+            df["lock_class_inferred"] = "unconstrained"
             df["lock_class"], df["band_ref_price"], df["band_limit_up"], df["band_limit_down"] = (
                 "unconstrained",
                 np.nan,

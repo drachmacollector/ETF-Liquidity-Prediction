@@ -51,3 +51,6 @@ Format and rules: [`docs/process/Documentation_Logging_and_Phase_Gates.md`](../d
 
 ## 2026-11-18 — P07 — session 1
 - Curated PIT store built and validated; 24 Indian split candidates resolved (37 verified rows); NAV-spike rule tightened; DATA_CUTOFF 2026-11-16; rebuild deterministic. VERIFIED. Next: P08.
+
+## 2026-11-19 — P08 — session 1
+- Pricing panel (315k rows, 106 instruments); known facts reproduced except SILVERAG Oct 2025 (explained, D-020); NSE T-2 NAV band verified from prices 2020-2026 and inferred locks added (D-019); NAV-basis break supported. VERIFIED. Next: P09.
